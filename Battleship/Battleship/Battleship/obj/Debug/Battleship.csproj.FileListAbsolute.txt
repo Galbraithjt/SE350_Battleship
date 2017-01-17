@@ -1,0 +1,14 @@
+c:\users\rien\documents\visual studio 2015\Projects\Battleship\Battleship\bin\Debug\Battleship.exe.config
+c:\users\rien\documents\visual studio 2015\Projects\Battleship\Battleship\bin\Debug\Battleship.exe
+c:\users\rien\documents\visual studio 2015\Projects\Battleship\Battleship\bin\Debug\Battleship.pdb
+c:\users\rien\documents\visual studio 2015\Projects\Battleship\Battleship\obj\Debug\Battleship.csprojResolveAssemblyReference.cache
+c:\users\rien\documents\visual studio 2015\Projects\Battleship\Battleship\obj\Debug\MainWindow.g.cs
+c:\users\rien\documents\visual studio 2015\Projects\Battleship\Battleship\obj\Debug\App.g.cs
+c:\users\rien\documents\visual studio 2015\Projects\Battleship\Battleship\obj\Debug\Battleship_MarkupCompile.cache
+c:\users\rien\documents\visual studio 2015\Projects\Battleship\Battleship\obj\Debug\Battleship_MarkupCompile.lref
+c:\users\rien\documents\visual studio 2015\Projects\Battleship\Battleship\obj\Debug\MainWindow.baml
+c:\users\rien\documents\visual studio 2015\Projects\Battleship\Battleship\obj\Debug\Battleship.g.resources
+c:\users\rien\documents\visual studio 2015\Projects\Battleship\Battleship\obj\Debug\Battleship.Properties.Resources.resources
+c:\users\rien\documents\visual studio 2015\Projects\Battleship\Battleship\obj\Debug\Battleship.csproj.GenerateResource.Cache
+c:\users\rien\documents\visual studio 2015\Projects\Battleship\Battleship\obj\Debug\Battleship.exe
+c:\users\rien\documents\visual studio 2015\Projects\Battleship\Battleship\obj\Debug\Battleship.pdb

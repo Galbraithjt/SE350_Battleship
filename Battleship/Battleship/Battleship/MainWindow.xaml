@@ -1,0 +1,123 @@
+﻿<Window x:Name="MainWindow1" x:Class="Battleship.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Battleship"
+        mc:Ignorable="d"
+        Title="Battleship" Height="350" Width="609" Background="#FF8DB6F0">
+    <Grid x:Name="MainGrid" RenderTransformOrigin="0.498,0.492" HorizontalAlignment="Right" Width="600" Height="314" VerticalAlignment="Bottom" Margin="0,0,1,3">
+        <Rectangle x:Name="Enemy_Shipyard" Fill="#FFDCDCF9" Height="192" Margin="538,73,5,0" Stroke="Black" VerticalAlignment="Top" Visibility="Hidden"/>
+        <Rectangle x:Name="Player_Shipyard" Fill="#FFDCDCF9" Height="192" Margin="14,73,529,0" Stroke="Black" VerticalAlignment="Top" Visibility="Hidden"/>
+
+        <Label x:Name="Ship_Descriptions_Label" HorizontalAlignment="Left" Height="57" Margin="330,12,0,0" VerticalAlignment="Top" Width="190" Background="{x:Null}" Visibility="Hidden">
+            <Label.Content>
+                <AccessText TextWrapping="Wrap" Text="PB = Patrol boat  SSBN = Submarine DDG= Destroyer BB= Battleship CVN= Aircraft carrier" Background="#FF62ACF5"/>
+            </Label.Content>
+        </Label>
+
+        <Button x:Name="Fire_Missile" Content="Fire Missile" HorizontalAlignment="Left" Height="34" Margin="92,28,0,0" VerticalAlignment="Top" Width="73" IsEnabled="False" Click="Fire_Missile_Click" Visibility="Hidden"/>
+        <Button x:Name="Retreat" Content="Retreat" HorizontalAlignment="Left" Height="34" Margin="189,27,0,0" VerticalAlignment="Top" Width="68" Click="Retreat_Click" Visibility="Hidden" />
+        <Label x:Name="Hit_Ratio" Content="Hit: 0" HorizontalAlignment="Left" Height="26" Margin="19,193,0,0" VerticalAlignment="Top" Width="46" Background="#FF62ACF5" Visibility="Hidden"/>
+        <Label x:Name="Miss_Ratio" Content="Miss: 0" HorizontalAlignment="Left" Height="26" Margin="16,225,0,0" VerticalAlignment="Top" Width="51" Background="#FF62ACF5" Visibility="Hidden"/>
+        <Label x:Name="Player_One_Label" Content="Player One" HorizontalAlignment="Left" Height="23" Margin="88,291,0,0" VerticalAlignment="Top" Width="90" Background="#FF62AFF5" Visibility="Hidden"/>
+        <Label x:Name="Player_Two_Label" Content="Player Two" HorizontalAlignment="Left" Height="23" Margin="329,291,0,0" VerticalAlignment="Top" Width="90" Background="#FF62ACF5" Visibility="Hidden"/>
+        <Label x:Name="Hit_Ratio_Enemy" Content="Hit: 0" HorizontalAlignment="Left" Height="26" Margin="543,196,0,0" VerticalAlignment="Top" Width="46" Background="#FF62ACF5" Visibility="Hidden"/>
+        <Label x:Name="Miss_Ratio_Enemy" Content="Miss: 0" HorizontalAlignment="Left" Height="26" Margin="541,228,0,0" VerticalAlignment="Top" Width="51" Background="#FF62ACF5" Visibility="Hidden"/>
+        <TextBox x:Name="One_TextBox" HorizontalAlignment="Left" Height="20" Margin="296,89,0,0" TextWrapping="Wrap" Text="1" VerticalAlignment="Top" Width="25" IsReadOnly="True" Visibility="Hidden"/>
+        <TextBox x:Name="Two_TextBox" HorizontalAlignment="Left" Height="20" Margin="296,109,0,0" TextWrapping="Wrap" Text="2" VerticalAlignment="Top" Width="25" IsReadOnly="True" Visibility="Hidden"/>
+        <TextBox x:Name="Three_TextBox" HorizontalAlignment="Left" Height="20" Margin="296,127,0,0" TextWrapping="Wrap" Text="3" VerticalAlignment="Top" Width="25" IsReadOnly="True" Visibility="Hidden"/>
+        <TextBox x:Name="Four_TextBox" HorizontalAlignment="Left" Height="20" Margin="296,147,0,0" TextWrapping="Wrap" Text="4" VerticalAlignment="Top" Width="25" IsReadOnly="True" Visibility="Hidden"/>
+        <TextBox x:Name="Five_TextBox" HorizontalAlignment="Left" Height="20" Margin="296,167,0,0" TextWrapping="Wrap" Text="5" VerticalAlignment="Top" Width="25" IsReadOnly="True" Visibility="Hidden"/>
+        <TextBox x:Name="Six_TextBox" HorizontalAlignment="Left" Height="20" Margin="296,187,0,0" TextWrapping="Wrap" Text="6" VerticalAlignment="Top" Width="25" IsReadOnly="True" RenderTransformOrigin="0.571,2.7" Visibility="Hidden"/>
+        <TextBox x:Name="Seven_TextBox" HorizontalAlignment="Left" Height="20" Margin="296,207,0,0" TextWrapping="Wrap" Text="7" VerticalAlignment="Top" Width="25" IsReadOnly="True" Visibility="Hidden"/>
+        <TextBox x:Name="Eight_TextBox" HorizontalAlignment="Left" Height="20" Margin="296,227,0,0" TextWrapping="Wrap" Text="8" VerticalAlignment="Top" Width="25" IsReadOnly="True" Visibility="Hidden"/>
+        <TextBox x:Name="Nine_TextBox" HorizontalAlignment="Left" Height="20" Margin="296,247,0,0" TextWrapping="Wrap" Text="9" VerticalAlignment="Top" Width="25" IsReadOnly="True" Visibility="Hidden"/>
+        <TextBox x:Name="Ten_TextBox" HorizontalAlignment="Left" Height="20" Margin="296,267,0,0" TextWrapping="Wrap" Text="10" VerticalAlignment="Top" Width="25" IsReadOnly="True" Visibility="Hidden"/>
+        <Grid x:Name="Player_Grid" Margin="88,88,312,26" ShowGridLines="True" Background="White" Visibility="Hidden" >
+            <Grid.RowDefinitions>
+                <RowDefinition Height="20*"/>
+                <RowDefinition Height="20*"/>
+                <RowDefinition Height="20*"/>
+                <RowDefinition Height="20*"/>
+                <RowDefinition Height="20*"/>
+                <RowDefinition Height="20*"/>
+                <RowDefinition Height="20*"/>
+                <RowDefinition Height="20*"/>
+                <RowDefinition Height="20*"/>
+                <RowDefinition Height="20*"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="20"/>
+                <ColumnDefinition Width="20"/>
+                <ColumnDefinition Width="20"/>
+                <ColumnDefinition Width="20"/>
+                <ColumnDefinition Width="20"/>
+                <ColumnDefinition Width="20"/>
+                <ColumnDefinition Width="20"/>
+                <ColumnDefinition Width="20"/>
+                <ColumnDefinition Width="20"/>
+                <ColumnDefinition Width="20"/>
+            </Grid.ColumnDefinitions>
+
+        </Grid>
+        <Grid x:Name="Enemy_Grid" Margin="329,88,71,26" ShowGridLines="True" Background="White" MouseDown="Enemy_Grid_MouseDown_1" Visibility="Hidden">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="20*"/>
+                <RowDefinition Height="20*"/>
+                <RowDefinition Height="20*"/>
+                <RowDefinition Height="20*"/>
+                <RowDefinition Height="20*"/>
+                <RowDefinition Height="20*"/>
+                <RowDefinition Height="20*"/>
+                <RowDefinition Height="20*"/>
+                <RowDefinition Height="20*"/>
+                <RowDefinition Height="20*"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="20"/>
+                <ColumnDefinition Width="20"/>
+                <ColumnDefinition Width="20"/>
+                <ColumnDefinition Width="20"/>
+                <ColumnDefinition Width="20"/>
+                <ColumnDefinition Width="20"/>
+                <ColumnDefinition Width="20"/>
+                <ColumnDefinition Width="20"/>
+                <ColumnDefinition Width="20"/>
+                <ColumnDefinition Width="20"/>
+            </Grid.ColumnDefinitions>
+
+        </Grid>
+        <TextBox x:Name="A_TextBox" HorizontalAlignment="Left" Height="20" Margin="329,66,0,0" TextWrapping="Wrap" Text="A" VerticalAlignment="Top" Width="20" IsReadOnly="True" Visibility="Hidden"/>
+        <TextBox x:Name="B_TextBox" HorizontalAlignment="Left" Height="20" Margin="349,66,0,0" TextWrapping="Wrap" Text="B" VerticalAlignment="Top" Width="20" IsReadOnly="True" Visibility="Hidden"/>
+        <TextBox x:Name="C_TextBox" HorizontalAlignment="Left" Height="20" Margin="369,66,0,0" TextWrapping="Wrap" Text="C" VerticalAlignment="Top" Width="20" IsReadOnly="True" Visibility="Hidden"/>
+        <TextBox x:Name="D_TextBox" HorizontalAlignment="Left" Height="20" Margin="389,66,0,0" TextWrapping="Wrap" Text="D" VerticalAlignment="Top" Width="20" IsReadOnly="True" Visibility="Hidden"/>
+        <TextBox x:Name="E_TextBox" HorizontalAlignment="Left" Height="20" Margin="409,66,0,0" TextWrapping="Wrap" Text="E" VerticalAlignment="Top" Width="20" IsReadOnly="True" Visibility="Hidden"/>
+        <TextBox x:Name="F_TextBox" HorizontalAlignment="Left" Height="20" Margin="429,66,0,0" TextWrapping="Wrap" Text="F" VerticalAlignment="Top" Width="20" IsReadOnly="True" Visibility="Hidden"/>
+        <TextBox x:Name="G_TextBox" HorizontalAlignment="Left" Height="20" Margin="449,66,0,0" TextWrapping="Wrap" Text="G" VerticalAlignment="Top" Width="20" IsReadOnly="True" Visibility="Hidden"/>
+        <TextBox x:Name="H_TextBox" HorizontalAlignment="Left" Height="20" Margin="469,66,0,0" TextWrapping="Wrap" Text="H" VerticalAlignment="Top" Width="20" IsReadOnly="True" Visibility="Hidden"/>
+        <TextBox x:Name="I_TextBox" HorizontalAlignment="Left" Height="20" Margin="489,66,0,0" TextWrapping="Wrap" Text="I" VerticalAlignment="Top" Width="20" IsReadOnly="True" Visibility="Hidden"/>
+        <TextBox x:Name="J_TextBox" HorizontalAlignment="Left" Height="20" Margin="509,66,0,0" TextWrapping="Wrap" Text="J" VerticalAlignment="Top" Width="20" IsReadOnly="True" Visibility="Hidden"/>
+        <Canvas x:Name="Enemy_Canvas" Margin="329,88,74,32" Width="200" Height="200" x:FieldModifier="public" Visibility="Hidden"/>
+        <TextBox x:Name="A_TextBox_Copy" HorizontalAlignment="Left" Height="20" Margin="88,67,0,0" TextWrapping="Wrap" Text="A" VerticalAlignment="Top" Width="20" IsReadOnly="True" Visibility="Hidden"/>
+        <TextBox x:Name="B_TextBox_Copy" HorizontalAlignment="Left" Height="20" Margin="108,67,0,0" TextWrapping="Wrap" Text="B" VerticalAlignment="Top" Width="20" IsReadOnly="True" Visibility="Hidden"/>
+        <TextBox x:Name="C_TextBox_Copy" HorizontalAlignment="Left" Height="20" Margin="128,67,0,0" TextWrapping="Wrap" Text="C" VerticalAlignment="Top" Width="20" IsReadOnly="True" Visibility="Hidden"/>
+        <TextBox x:Name="D_TextBox_Copy" HorizontalAlignment="Left" Height="20" Margin="148,67,0,0" TextWrapping="Wrap" Text="D" VerticalAlignment="Top" Width="20" IsReadOnly="True" Visibility="Hidden"/>
+        <TextBox x:Name="E_TextBox_Copy" HorizontalAlignment="Left" Height="20" Margin="168,67,0,0" TextWrapping="Wrap" Text="E" VerticalAlignment="Top" Width="20" IsReadOnly="True" Visibility="Hidden"/>
+        <TextBox x:Name="F_TextBox_Copy" HorizontalAlignment="Left" Height="20" Margin="188,67,0,0" TextWrapping="Wrap" Text="F" VerticalAlignment="Top" Width="20" IsReadOnly="True" Visibility="Hidden"/>
+        <TextBox x:Name="G_TextBox_Copy" HorizontalAlignment="Left" Height="20" Margin="208,67,0,0" TextWrapping="Wrap" Text="G" VerticalAlignment="Top" Width="20" IsReadOnly="True" Visibility="Hidden"/>
+        <TextBox x:Name="H_TextBox_Copy" HorizontalAlignment="Left" Height="20" Margin="228,67,0,0" TextWrapping="Wrap" Text="H" VerticalAlignment="Top" Width="20" IsReadOnly="True" Visibility="Hidden"/>
+        <TextBox x:Name="I_TextBox_Copy" HorizontalAlignment="Left" Height="20" Margin="248,67,0,0" TextWrapping="Wrap" Text="I" VerticalAlignment="Top" Width="20" IsReadOnly="True" Visibility="Hidden"/>
+        <TextBox x:Name="J_TextBox_Copy" HorizontalAlignment="Left" Height="20" Margin="268,67,0,0" TextWrapping="Wrap" Text="J" VerticalAlignment="Top" Width="20" IsReadOnly="True" Visibility="Hidden"/>
+        <Button x:Name="PlaceShips" Content="Place Ships" HorizontalAlignment="Left" Height="34" Margin="92,28,0,0" VerticalAlignment="Top" Width="73" Click="PlaceShips_Click" Visibility="Hidden"/>
+        <Button x:Name="Start_Game_Button" Content="Start" HorizontalAlignment="Left" Height="45" Margin="340,156,0,0" VerticalAlignment="Top" Width="75" Background="#FF11D4FF" Click="Start_Game_Button_Click"/>
+        <Label x:Name="Main_Menu_Label" Content="BATTLESHIP" HorizontalAlignment="Left" Height="77" Margin="34,21,0,0" VerticalAlignment="Top" Width="328" FontSize="48" FontFamily="Segoe UI Black"/>
+        <TextBox x:Name="Enemy_Shipyard_Text_Block" HorizontalAlignment="Left" Height="43" Margin="538,27,0,0" TextWrapping="Wrap" Text="Enemy Shipyard" VerticalAlignment="Top" Width="56" Background="#FFF92C2C" Visibility="Hidden"/>
+        <TextBox x:Name="Player_Shipyard_Text_Block" HorizontalAlignment="Left" Height="43" Margin="13,25,0,0" TextWrapping="Wrap" Text="Your Shipyard" VerticalAlignment="Top" Width="56" Background="#FF2CF9D4" Visibility="Hidden"/>
+        <Canvas x:Name="Player_Canvas" HorizontalAlignment="Left" Height="198" Margin="88,88,312,26" VerticalAlignment="Top" Width="200" Visibility="Hidden"/>
+        <Button x:Name="Confirm_Ships_Button" Content="Confirm" HorizontalAlignment="Left" Height="34" Margin="189,27,0,0" VerticalAlignment="Top" Width="68" Visibility="Hidden" Click="Confirm_Ships_Button_Click"/>
+        <Button x:Name="Restart_Game_Button" Content="Restart" HorizontalAlignment="Left" Height="34" Margin="93,28,0,0" VerticalAlignment="Top" Width="73" Background="#FF11D4FF" Click="Start_Game_Button_Click" Visibility="Hidden"/>
+        <Button x:Name="Exit_Game_Button" Content="Exit Game" HorizontalAlignment="Left" Height="34" Margin="189,27,0,0" VerticalAlignment="Top" Width="68" Background="#FF11D4FF" Click="Exit_Game_Button_Click" Visibility="Hidden"/>
+    </Grid>
+
+</Window>
