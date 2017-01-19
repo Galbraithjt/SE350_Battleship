@@ -12,3 +12,17 @@ c:\users\rien\documents\visual studio 2015\Projects\Battleship\Battleship\obj\De
 c:\users\rien\documents\visual studio 2015\Projects\Battleship\Battleship\obj\Debug\Battleship.csproj.GenerateResource.Cache
 c:\users\rien\documents\visual studio 2015\Projects\Battleship\Battleship\obj\Debug\Battleship.exe
 c:\users\rien\documents\visual studio 2015\Projects\Battleship\Battleship\obj\Debug\Battleship.pdb
+C:\Users\Joshua\Documents\GitHub\SE350_Battleship\Battleship\Battleship\Battleship\bin\Debug\Battleship.exe.config
+C:\Users\Joshua\Documents\GitHub\SE350_Battleship\Battleship\Battleship\Battleship\obj\Debug\Battleship.exe
+C:\Users\Joshua\Documents\GitHub\SE350_Battleship\Battleship\Battleship\Battleship\obj\Debug\Battleship.pdb
+C:\Users\Joshua\Documents\GitHub\SE350_Battleship\Battleship\Battleship\Battleship\bin\Debug\Battleship.exe
+C:\Users\Joshua\Documents\GitHub\SE350_Battleship\Battleship\Battleship\Battleship\bin\Debug\Battleship.pdb
+C:\Users\Joshua\Documents\GitHub\SE350_Battleship\Battleship\Battleship\Battleship\obj\Debug\Battleship.csprojResolveAssemblyReference.cache
+C:\Users\Joshua\Documents\GitHub\SE350_Battleship\Battleship\Battleship\Battleship\obj\Debug\MainWindow.g.cs
+C:\Users\Joshua\Documents\GitHub\SE350_Battleship\Battleship\Battleship\Battleship\obj\Debug\App.g.cs
+C:\Users\Joshua\Documents\GitHub\SE350_Battleship\Battleship\Battleship\Battleship\obj\Debug\Battleship_MarkupCompile.cache
+C:\Users\Joshua\Documents\GitHub\SE350_Battleship\Battleship\Battleship\Battleship\obj\Debug\Battleship_MarkupCompile.lref
+C:\Users\Joshua\Documents\GitHub\SE350_Battleship\Battleship\Battleship\Battleship\obj\Debug\MainWindow.baml
+C:\Users\Joshua\Documents\GitHub\SE350_Battleship\Battleship\Battleship\Battleship\obj\Debug\Battleship.g.resources
+C:\Users\Joshua\Documents\GitHub\SE350_Battleship\Battleship\Battleship\Battleship\obj\Debug\Battleship.Properties.Resources.resources
+C:\Users\Joshua\Documents\GitHub\SE350_Battleship\Battleship\Battleship\Battleship\obj\Debug\Battleship.csproj.GenerateResource.Cache
