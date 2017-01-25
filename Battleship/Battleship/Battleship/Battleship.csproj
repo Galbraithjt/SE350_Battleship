@@ -55,10 +55,9 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="ComputerPlayer.cs" />
+    <Compile Include="Board.cs" />
     <Compile Include="Grid.cs" />
-    <Compile Include="Location.cs" />
-    <Compile Include="Piece.cs" />
+    <Compile Include="Ship.cs" />
     <Compile Include="Player.cs" />
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>

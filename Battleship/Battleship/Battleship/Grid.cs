@@ -8,32 +8,23 @@ namespace Battleship
 {
     class Grid
     {
-        public Piece[] playerShips;
+        public Ship[] playerShips;
+        public int[,] GridLocation;
         public int shipsSunk;
-        public int numHits;
-        public int numMiss;
         public int gridWidthStart;
         public int gridHeightStart;
-        public int gridWidthEnd;
-        public int gridHeightEnd;
-        public int removeLocation { get; set; }
-        public double x_fire_coordinate { get; set; }
-        public double y_fire_coordinate { get; set; }
+        public int hits;
+        public int misses;
         public Grid()
         {
-            playerShips = new Piece[5];
-           
-
+            playerShips = new Ship[5];
             shipsSunk = 0;
-            numHits = 0;
-            numMiss = 0;
             gridWidthStart = 329;
             gridHeightStart = 88;
-            gridWidthEnd = 529;
-            gridHeightEnd = 288;
-            x_fire_coordinate = 0;
-            y_fire_coordinate = 0;
-            removeLocation = 0;
+            GridLocation= new int [10,10];
+            hits = 0;
+            misses = 0;
+            clearGrid();
     }
         public void algorithm()
         {
@@ -57,24 +48,92 @@ namespace Battleship
             height = (20 * 1);
 
         }
-        public void isHit(Location coordinate)
+        public void placeShips(Grid grid, Ship ship)
+        {
+            bool notPlace = false;
+            do
+            {
+                Random ranCol = new Random();
+                Random ranRow = new Random();
+               
+                if (ship.direction == true)
+                {
+                    int compare = 0;
+                    int row = ranRow.Next(1, 10 - (ship.length - 1));
+                    int col = ranCol.Next(1, 10);
+                    while (compare < ship.length)
+                    {
+                        if (grid.GridLocation[(row + compare), col] == 0)
+                        {
+                            compare++;
+                            if (compare == ship.length)
+                            {
+                                notPlace = true;
+                                for (int x = 0; x < ship.length; x++)
+                                {
+                                    grid.GridLocation[(row + x), col] = 1;
+                                    ship.startPoint.X = row;
+                                    ship.startPoint.Y = col;
+                                }
+                            }
+                        }
+                        else
+                        {
+                            break;
+                        }
+                    }
+                }
+
+
+
+
+            } while (notPlace == false);
+
+        }
+        private void clearGrid()
+        {
+            for (int x = 0; x < 10;x++)
+            {
+                for (int y = 0; y < 10; y++)
+                {
+                    GridLocation[x,y] = 0;
+                }
+            }
+        }
+        public void isHit(System.Windows.Point firedLocation)
+        {
+            for (int x = 0; x < playerShips.Length; x++)
+            {
+                for (int y = 0; y < playerShips[x].length; y++)
+                {
+                    if (playerShips[x].direction == true)
+                    {
+                        if (playerShips[x].startPoint.X + y == firedLocation.X)
+                        {
+                            playerShips[x].health--;
+                            if (playerShips[x].health == 0)
+                            {
+                                System.Windows.MessageBox.Show("Enemy " + playerShips[x].name + " Sunk Commander!");
+                            }
+                        }
+                    }
+                    else
+                    {
+                        if (playerShips[x].startPoint.Y + y == firedLocation.Y)
+                        {
+                            playerShips[x].health--;
+                            if (playerShips[x].health == 0)
+                            {
+                                System.Windows.MessageBox.Show("Enemy " + playerShips[x].name + " Sunk Commander!");
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        public void reportShipHealth(Ship ship)
         {
 
         }
-        public void reportShipHealth(Piece inputShip)
-        {
-
-        }
-        public void updateDisplay()
-        {
-
-        }
-      
-       public void storeFireLocation(double x_coordinate, double y_coordinate)
-        {
-            x_fire_coordinate = x_coordinate;
-            y_fire_coordinate = y_coordinate;
-        }
-
     }
 }

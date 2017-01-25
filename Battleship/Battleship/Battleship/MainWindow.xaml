@@ -112,12 +112,22 @@
         <Button x:Name="PlaceShips" Content="Place Ships" HorizontalAlignment="Left" Height="34" Margin="92,28,0,0" VerticalAlignment="Top" Width="73" Click="PlaceShips_Click" Visibility="Hidden"/>
         <Button x:Name="Start_Game_Button" Content="Start" HorizontalAlignment="Left" Height="45" Margin="340,156,0,0" VerticalAlignment="Top" Width="75" Background="#FF11D4FF" Click="Start_Game_Button_Click"/>
         <Label x:Name="Main_Menu_Label" Content="BATTLESHIP" HorizontalAlignment="Left" Height="77" Margin="34,21,0,0" VerticalAlignment="Top" Width="328" FontSize="48" FontFamily="Segoe UI Black"/>
-        <TextBox x:Name="Enemy_Shipyard_Text_Block" HorizontalAlignment="Left" Height="43" Margin="538,27,0,0" TextWrapping="Wrap" Text="Enemy Shipyard" VerticalAlignment="Top" Width="56" Background="#FFF92C2C" Visibility="Hidden"/>
-        <TextBox x:Name="Player_Shipyard_Text_Block" HorizontalAlignment="Left" Height="43" Margin="13,25,0,0" TextWrapping="Wrap" Text="Your Shipyard" VerticalAlignment="Top" Width="56" Background="#FF2CF9D4" Visibility="Hidden"/>
+        <TextBox x:Name="Enemy_Shipyard_Text_Block" HorizontalAlignment="Left" Height="43" Margin="538,27,0,0" TextWrapping="Wrap" Text="Enemy Shipyard" VerticalAlignment="Top" Width="65" Background="#FFF92C2C" IsReadOnly="True" Visibility="Hidden"/>
+        <TextBox x:Name="Player_Shipyard_Text_Block" HorizontalAlignment="Left" Height="43" Margin="13,25,0,0" TextWrapping="Wrap" Text="Your Shipyard" VerticalAlignment="Top" Width="65" Background="#FF2CF9D4" IsReadOnly="True" Visibility="Hidden"/>
         <Canvas x:Name="Player_Canvas" HorizontalAlignment="Left" Height="198" Margin="88,88,312,26" VerticalAlignment="Top" Width="200" Visibility="Hidden"/>
         <Button x:Name="Confirm_Ships_Button" Content="Confirm" HorizontalAlignment="Left" Height="34" Margin="189,27,0,0" VerticalAlignment="Top" Width="68" Visibility="Hidden" Click="Confirm_Ships_Button_Click"/>
         <Button x:Name="Restart_Game_Button" Content="Restart" HorizontalAlignment="Left" Height="34" Margin="93,28,0,0" VerticalAlignment="Top" Width="73" Background="#FF11D4FF" Click="Start_Game_Button_Click" Visibility="Hidden"/>
         <Button x:Name="Exit_Game_Button" Content="Exit Game" HorizontalAlignment="Left" Height="34" Margin="189,27,0,0" VerticalAlignment="Top" Width="68" Background="#FF11D4FF" Click="Exit_Game_Button_Click" Visibility="Hidden"/>
+        <Ellipse x:Name="Enemy_Destroyer" Fill="#FF008080" HorizontalAlignment="Left" Height="60" Margin="543,77,0,0" Stroke="Black" VerticalAlignment="Top" Width="20" Visibility="Hidden"/>
+        <Ellipse x:Name="Enemy_Sub" Fill="#FF008080" HorizontalAlignment="Left" Height="60" Margin="567,77,0,0" Stroke="Black" VerticalAlignment="Top" Width="20" Visibility="Hidden"/>
+        <Ellipse x:Name="Enemy_Battleship" Fill="#FF008080" HorizontalAlignment="Left" Height="80" Margin="543,137,0,0" Stroke="Black" VerticalAlignment="Top" Width="20" Visibility="Hidden"/>
+        <Ellipse x:Name="Enemy_Carrier" Fill="#FF008080" HorizontalAlignment="Left" Height="100" Margin="570,147,0,0" Stroke="Black" VerticalAlignment="Top" Width="20" RenderTransformOrigin="0.533,0.044" Visibility="Hidden"/>
+        <Ellipse x:Name="Enemy_PatrolBoat" Fill="#FF008080" HorizontalAlignment="Left" Height="40" Margin="543,222,0,0" Stroke="Black" VerticalAlignment="Top" Width="20" Visibility="Hidden"/>
+        <Ellipse x:Name="Player_Destroyer" Fill="#FF008080" HorizontalAlignment="Left" Height="60" Margin="19,77,0,0" Stroke="Black" VerticalAlignment="Top" Width="20" Visibility="Hidden"/>
+        <Ellipse x:Name="Player_Sub" Fill="#FF008080" HorizontalAlignment="Left" Height="60" Margin="45,77,0,0" Stroke="Black" VerticalAlignment="Top" Width="20" Visibility="Hidden"/>
+        <Ellipse x:Name="Player_Battleship" Fill="#FF008080" HorizontalAlignment="Left" Height="80" Margin="19,137,0,0" Stroke="Black" VerticalAlignment="Top" Width="20" Visibility="Hidden"/>
+        <Ellipse x:Name="Player_Carrier" Fill="#FF008080" HorizontalAlignment="Left" Height="100" Margin="45,154,0,0" Stroke="Black" VerticalAlignment="Top" Width="20" RenderTransformOrigin="0.533,0.044" Visibility="Hidden"/>
+        <Ellipse x:Name="Player_PatrolBoat" Fill="#FF008080" HorizontalAlignment="Left" Height="40" Margin="19,222,0,0" Stroke="Black" VerticalAlignment="Top" Width="20" Visibility="Hidden"/>
     </Grid>
 
 </Window>
