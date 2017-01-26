@@ -30,7 +30,7 @@ namespace Battleship
         private void Fire_Missile_Click(object sender, RoutedEventArgs e)
         {
             //Create a rectangle that is dependant on if a hit or miss is achieved
-            if (Perform_Turn() == false)
+            if (Perform_Turn() == true)
             {
                 if (gameBoard.playerOne.active == true)
                 {
