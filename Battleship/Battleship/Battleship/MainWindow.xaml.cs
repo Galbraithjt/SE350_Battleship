@@ -20,6 +20,17 @@ namespace Battleship
     /// </summary>
     public partial class MainWindow : Window
     {
+
+        /*
+         * Refactor notes for Main Window
+         * 
+         * Consider renaiming the class itself?
+         * COMMENTS PAST ME, ADD MORE COMMENTS
+         * Rename player ships and enemy ships
+         * Seperate enemy and player ships more clearly in the code
+         * 
+         * 
+         * */
         Board gameBoard;
         public MainWindow()
         {
@@ -58,7 +69,7 @@ namespace Battleship
 
         private void PlaceShips_Click(object sender, RoutedEventArgs e)
         {
-            gameBoard.placeShips(gameBoard.playerOne.playerGrid);
+            gameBoard.PlaceShips(gameBoard.playerOne.playerGrid);
             Confirm_Ships_Button.IsEnabled = true;
             Player_Canvas.Children.Clear();
             for (int x = 0; x < gameBoard.playerOne.playerGrid.playerShips.Length; x++)
@@ -68,11 +79,13 @@ namespace Battleship
                                      gameBoard.playerOne.playerGrid.playerShips[x].direction), 
                                      Player_Canvas, gameBoard.playerOne.playerGrid.playerShips[x]);
             }
+            //Player battleship visibility
             Player_Battleship.Visibility = Visibility.Hidden;
             Player_Carrier.Visibility = Visibility.Hidden;
             Player_Destroyer.Visibility = Visibility.Hidden;
             Player_PatrolBoat.Visibility = Visibility.Hidden;
             Player_Sub.Visibility = Visibility.Hidden;
+            //Enemy Battleship visibility
             Enemy_Battleship.Visibility = Visibility.Hidden;
             Enemy_Carrier.Visibility = Visibility.Hidden;
             Enemy_Destroyer.Visibility = Visibility.Hidden;
@@ -84,16 +97,30 @@ namespace Battleship
         {
             Main_Menu_Label.Visibility = Visibility.Hidden;
             Start_Game_Button.Visibility = Visibility.Hidden;
-            A_TextBox.Visibility = Visibility.Visible;
-            B_TextBox.Visibility = Visibility.Visible;
-            C_TextBox.Visibility = Visibility.Visible;
-            D_TextBox.Visibility = Visibility.Visible;
-            E_TextBox.Visibility = Visibility.Visible;
-            F_TextBox.Visibility = Visibility.Visible;
-            G_TextBox.Visibility = Visibility.Visible;
-            H_TextBox.Visibility = Visibility.Visible;
-            I_TextBox.Visibility = Visibility.Visible;
-            J_TextBox.Visibility = Visibility.Visible;
+
+            //Player Visibility Text Boxes, Grid and Boats
+            Player_A_TextBox.Visibility = Visibility.Visible;
+            Player_B_TextBox.Visibility = Visibility.Visible;
+            Player_C_TextBox.Visibility = Visibility.Visible;
+            Player_D_TextBox.Visibility = Visibility.Visible;
+            Player_E_TextBox.Visibility = Visibility.Visible;
+            Player_F_TextBox.Visibility = Visibility.Visible;
+            Player_G_TextBox.Visibility = Visibility.Visible;
+            Player_H_TextBox.Visibility = Visibility.Visible;
+            Player_I_TextBox.Visibility = Visibility.Visible;
+            Player_J_TextBox.Visibility = Visibility.Visible;
+            Player_Shipyard.Visibility = Visibility.Visible;
+            Player_Battleship.Visibility = Visibility.Visible;
+            Player_Carrier.Visibility = Visibility.Visible;
+            Player_Destroyer.Visibility = Visibility.Visible;
+            Player_PatrolBoat.Visibility = Visibility.Visible;
+            Player_Sub.Visibility = Visibility.Visible;
+            Player_Canvas.Visibility = Visibility.Visible;
+            Player_One_Label.Visibility = Visibility.Visible;
+            Player_Two_Label.Visibility = Visibility.Visible;
+            Player_Shipyard_Text_Block.Visibility = Visibility.Visible;
+            Player_Grid.Visibility = Visibility.Visible;
+            //Enemy Grid,Text Boxes and Boats
             Enemy_Canvas.Visibility = Visibility.Visible;
             Enemy_Grid.Visibility = Visibility.Visible;
             Enemy_Shipyard.Visibility = Visibility.Visible;
@@ -103,6 +130,18 @@ namespace Battleship
             Enemy_PatrolBoat.Visibility = Visibility.Visible;
             Enemy_Sub.Visibility = Visibility.Visible;
             Enemy_Grid.IsEnabled = false;
+            Enemy_A_TextBox.Visibility = Visibility.Visible;
+            Enemy_B_TextBox.Visibility = Visibility.Visible;
+            Enemy_C_TextBox.Visibility = Visibility.Visible;
+            Enemy_D_TextBox.Visibility = Visibility.Visible;
+            Enemy_E_TextBox.Visibility = Visibility.Visible;
+            Enemy_F_TextBox.Visibility = Visibility.Visible;
+            Enemy_G_TextBox.Visibility = Visibility.Visible;
+            Enemy_H_TextBox.Visibility = Visibility.Visible;
+            Enemy_I_TextBox.Visibility = Visibility.Visible;
+            Enemy_J_TextBox.Visibility = Visibility.Visible;
+            Enemy_Shipyard_Text_Block.Visibility = Visibility.Visible;
+            //General Game Asset Visibility
             PlaceShips.Visibility = Visibility.Visible;
             One_TextBox.Visibility = Visibility.Visible;
             Two_TextBox.Visibility = Visibility.Visible;
@@ -114,41 +153,19 @@ namespace Battleship
             Eight_TextBox.Visibility = Visibility.Visible;
             Nine_TextBox.Visibility = Visibility.Visible;
             Ten_TextBox.Visibility = Visibility.Visible;
-            Player_Grid.Visibility = Visibility.Visible;
-            A_TextBox_Copy.Visibility = Visibility.Visible;
-            B_TextBox_Copy.Visibility = Visibility.Visible;
-            C_TextBox_Copy.Visibility = Visibility.Visible;
-            D_TextBox_Copy.Visibility = Visibility.Visible;
-            E_TextBox_Copy.Visibility = Visibility.Visible;
-            F_TextBox_Copy.Visibility = Visibility.Visible;
-            G_TextBox_Copy.Visibility = Visibility.Visible;
-            H_TextBox_Copy.Visibility = Visibility.Visible;
-            I_TextBox_Copy.Visibility = Visibility.Visible;
-            J_TextBox_Copy.Visibility = Visibility.Visible;
-            Player_Shipyard.Visibility = Visibility.Visible;
-            Player_Battleship.Visibility = Visibility.Visible;
-            Player_Carrier.Visibility = Visibility.Visible;
-            Player_Destroyer.Visibility = Visibility.Visible;
-            Player_PatrolBoat.Visibility = Visibility.Visible;
-            Player_Sub.Visibility = Visibility.Visible;
-            Player_Canvas.Visibility = Visibility.Visible;
-            Player_One_Label.Visibility = Visibility.Visible;
-            Player_Two_Label.Visibility = Visibility.Visible;
-            Player_Shipyard_Text_Block.Visibility = Visibility.Visible;
-            Enemy_Shipyard_Text_Block.Visibility = Visibility.Visible;
             Confirm_Ships_Button.Visibility = Visibility.Visible;
             Ship_Descriptions_Label.Visibility = Visibility.Visible;
             Confirm_Ships_Button.IsEnabled = false;
         }
 
-        private void Enemy_Grid_MouseDown_1(object sender, MouseButtonEventArgs e)
+        private void Enemy_Grid_MouseDown_(object sender, MouseButtonEventArgs e)
         {
             //Point is a object that holds a x and y value.
             //Point is then set to the current position of the click origin in 
             //the current window.
             Point point = Mouse.GetPosition(Application.Current.MainWindow);
             //Apply the algorith covered in grid to the stored points
-            gameBoard.selectSquare(point, gameBoard.playerTwo.playerGrid);
+            gameBoard.SelectSquare(point, gameBoard.playerTwo.playerGrid);
             Fire_Missile.IsEnabled = true;
 
             Rectangle selection = new Rectangle();
@@ -187,7 +204,7 @@ namespace Battleship
             bool hitOrMiss = false;
             if (gameBoard.playerOne.active == true)
             {
-                int firingStatus = gameBoard.fireShot(gameBoard.playerTwo.playerGrid);
+                int firingStatus = gameBoard.FireShot(gameBoard.playerTwo.playerGrid);
                 if (firingStatus != 2)
                 {
                     if (firingStatus == 0)
@@ -202,7 +219,7 @@ namespace Battleship
             }
             else
             {
-                int firingStatus = gameBoard.fireShot(gameBoard.playerOne.playerGrid);
+                int firingStatus = gameBoard.FireShot(gameBoard.playerOne.playerGrid);
                 if (firingStatus != 2)
                 {
                     if (firingStatus == 0)
@@ -240,9 +257,11 @@ namespace Battleship
         }
         private Rectangle CreateRectangle(bool hitMiss)
         {
-            Rectangle rect = new Rectangle();
-            rect.Width = 20;
-            rect.Height = 20;
+            Rectangle rect = new Rectangle
+            {
+                Width = 20,
+                Height = 20
+            };
 
             if (hitMiss == false)
             {
@@ -256,6 +275,7 @@ namespace Battleship
             }
             return rect;
         }
+
         private void PlaceRectangle(Rectangle rect)
         {
             Canvas.SetTop(rect, (gameBoard.fireLocation.Y * 20));

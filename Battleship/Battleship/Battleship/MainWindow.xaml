@@ -88,27 +88,27 @@
             </Grid.ColumnDefinitions>
 
         </Grid>
-        <TextBox x:Name="A_TextBox" HorizontalAlignment="Left" Height="20" Margin="329,66,0,0" TextWrapping="Wrap" Text="A" VerticalAlignment="Top" Width="20" IsReadOnly="True" Visibility="Hidden"/>
-        <TextBox x:Name="B_TextBox" HorizontalAlignment="Left" Height="20" Margin="349,66,0,0" TextWrapping="Wrap" Text="B" VerticalAlignment="Top" Width="20" IsReadOnly="True" Visibility="Hidden"/>
-        <TextBox x:Name="C_TextBox" HorizontalAlignment="Left" Height="20" Margin="369,66,0,0" TextWrapping="Wrap" Text="C" VerticalAlignment="Top" Width="20" IsReadOnly="True" Visibility="Hidden"/>
-        <TextBox x:Name="D_TextBox" HorizontalAlignment="Left" Height="20" Margin="389,66,0,0" TextWrapping="Wrap" Text="D" VerticalAlignment="Top" Width="20" IsReadOnly="True" Visibility="Hidden"/>
-        <TextBox x:Name="E_TextBox" HorizontalAlignment="Left" Height="20" Margin="409,66,0,0" TextWrapping="Wrap" Text="E" VerticalAlignment="Top" Width="20" IsReadOnly="True" Visibility="Hidden"/>
-        <TextBox x:Name="F_TextBox" HorizontalAlignment="Left" Height="20" Margin="429,66,0,0" TextWrapping="Wrap" Text="F" VerticalAlignment="Top" Width="20" IsReadOnly="True" Visibility="Hidden"/>
-        <TextBox x:Name="G_TextBox" HorizontalAlignment="Left" Height="20" Margin="449,66,0,0" TextWrapping="Wrap" Text="G" VerticalAlignment="Top" Width="20" IsReadOnly="True" Visibility="Hidden"/>
-        <TextBox x:Name="H_TextBox" HorizontalAlignment="Left" Height="20" Margin="469,66,0,0" TextWrapping="Wrap" Text="H" VerticalAlignment="Top" Width="20" IsReadOnly="True" Visibility="Hidden"/>
-        <TextBox x:Name="I_TextBox" HorizontalAlignment="Left" Height="20" Margin="489,66,0,0" TextWrapping="Wrap" Text="I" VerticalAlignment="Top" Width="20" IsReadOnly="True" Visibility="Hidden"/>
-        <TextBox x:Name="J_TextBox" HorizontalAlignment="Left" Height="20" Margin="509,66,0,0" TextWrapping="Wrap" Text="J" VerticalAlignment="Top" Width="20" IsReadOnly="True" Visibility="Hidden"/>
+        <TextBox x:Name="Player_A_TextBox" HorizontalAlignment="Left" Height="20" Margin="329,66,0,0" TextWrapping="Wrap" Text="A" VerticalAlignment="Top" Width="20" IsReadOnly="True" Visibility="Hidden"/>
+        <TextBox x:Name="Player_B_TextBox" HorizontalAlignment="Left" Height="20" Margin="349,66,0,0" TextWrapping="Wrap" Text="B" VerticalAlignment="Top" Width="20" IsReadOnly="True" Visibility="Hidden"/>
+        <TextBox x:Name="Player_C_TextBox" HorizontalAlignment="Left" Height="20" Margin="369,66,0,0" TextWrapping="Wrap" Text="C" VerticalAlignment="Top" Width="20" IsReadOnly="True" Visibility="Hidden"/>
+        <TextBox x:Name="Player_D_TextBox" HorizontalAlignment="Left" Height="20" Margin="389,66,0,0" TextWrapping="Wrap" Text="D" VerticalAlignment="Top" Width="20" IsReadOnly="True" Visibility="Hidden"/>
+        <TextBox x:Name="Player_E_TextBox" HorizontalAlignment="Left" Height="20" Margin="409,66,0,0" TextWrapping="Wrap" Text="E" VerticalAlignment="Top" Width="20" IsReadOnly="True" Visibility="Hidden"/>
+        <TextBox x:Name="Player_F_TextBox" HorizontalAlignment="Left" Height="20" Margin="429,66,0,0" TextWrapping="Wrap" Text="F" VerticalAlignment="Top" Width="20" IsReadOnly="True" Visibility="Hidden"/>
+        <TextBox x:Name="Player_G_TextBox" HorizontalAlignment="Left" Height="20" Margin="449,66,0,0" TextWrapping="Wrap" Text="G" VerticalAlignment="Top" Width="20" IsReadOnly="True" Visibility="Hidden"/>
+        <TextBox x:Name="Player_H_TextBox" HorizontalAlignment="Left" Height="20" Margin="469,66,0,0" TextWrapping="Wrap" Text="H" VerticalAlignment="Top" Width="20" IsReadOnly="True" Visibility="Hidden"/>
+        <TextBox x:Name="Player_I_TextBox" HorizontalAlignment="Left" Height="20" Margin="489,66,0,0" TextWrapping="Wrap" Text="I" VerticalAlignment="Top" Width="20" IsReadOnly="True" Visibility="Hidden"/>
+        <TextBox x:Name="Player_J_TextBox" HorizontalAlignment="Left" Height="20" Margin="509,66,0,0" TextWrapping="Wrap" Text="J" VerticalAlignment="Top" Width="20" IsReadOnly="True" Visibility="Hidden"/>
         <Canvas x:Name="Enemy_Canvas" Margin="329,88,74,32" Width="200" Height="200" x:FieldModifier="public" Visibility="Hidden"/>
-        <TextBox x:Name="A_TextBox_Copy" HorizontalAlignment="Left" Height="20" Margin="88,67,0,0" TextWrapping="Wrap" Text="A" VerticalAlignment="Top" Width="20" IsReadOnly="True" Visibility="Hidden"/>
-        <TextBox x:Name="B_TextBox_Copy" HorizontalAlignment="Left" Height="20" Margin="108,67,0,0" TextWrapping="Wrap" Text="B" VerticalAlignment="Top" Width="20" IsReadOnly="True" Visibility="Hidden"/>
-        <TextBox x:Name="C_TextBox_Copy" HorizontalAlignment="Left" Height="20" Margin="128,67,0,0" TextWrapping="Wrap" Text="C" VerticalAlignment="Top" Width="20" IsReadOnly="True" Visibility="Hidden"/>
-        <TextBox x:Name="D_TextBox_Copy" HorizontalAlignment="Left" Height="20" Margin="148,67,0,0" TextWrapping="Wrap" Text="D" VerticalAlignment="Top" Width="20" IsReadOnly="True" Visibility="Hidden"/>
-        <TextBox x:Name="E_TextBox_Copy" HorizontalAlignment="Left" Height="20" Margin="168,67,0,0" TextWrapping="Wrap" Text="E" VerticalAlignment="Top" Width="20" IsReadOnly="True" Visibility="Hidden"/>
-        <TextBox x:Name="F_TextBox_Copy" HorizontalAlignment="Left" Height="20" Margin="188,67,0,0" TextWrapping="Wrap" Text="F" VerticalAlignment="Top" Width="20" IsReadOnly="True" Visibility="Hidden"/>
-        <TextBox x:Name="G_TextBox_Copy" HorizontalAlignment="Left" Height="20" Margin="208,67,0,0" TextWrapping="Wrap" Text="G" VerticalAlignment="Top" Width="20" IsReadOnly="True" Visibility="Hidden"/>
-        <TextBox x:Name="H_TextBox_Copy" HorizontalAlignment="Left" Height="20" Margin="228,67,0,0" TextWrapping="Wrap" Text="H" VerticalAlignment="Top" Width="20" IsReadOnly="True" Visibility="Hidden"/>
-        <TextBox x:Name="I_TextBox_Copy" HorizontalAlignment="Left" Height="20" Margin="248,67,0,0" TextWrapping="Wrap" Text="I" VerticalAlignment="Top" Width="20" IsReadOnly="True" Visibility="Hidden"/>
-        <TextBox x:Name="J_TextBox_Copy" HorizontalAlignment="Left" Height="20" Margin="268,67,0,0" TextWrapping="Wrap" Text="J" VerticalAlignment="Top" Width="20" IsReadOnly="True" Visibility="Hidden"/>
+        <TextBox x:Name="Enemy_A_TextBox" HorizontalAlignment="Left" Height="20" Margin="88,67,0,0" TextWrapping="Wrap" Text="A" VerticalAlignment="Top" Width="20" IsReadOnly="True" Visibility="Hidden"/>
+        <TextBox x:Name="Enemy_B_TextBox" HorizontalAlignment="Left" Height="20" Margin="108,67,0,0" TextWrapping="Wrap" Text="B" VerticalAlignment="Top" Width="20" IsReadOnly="True" Visibility="Hidden"/>
+        <TextBox x:Name="Enemy_C_TextBox" HorizontalAlignment="Left" Height="20" Margin="128,67,0,0" TextWrapping="Wrap" Text="C" VerticalAlignment="Top" Width="20" IsReadOnly="True" Visibility="Hidden"/>
+        <TextBox x:Name="Enemy_D_TextBox" HorizontalAlignment="Left" Height="20" Margin="148,67,0,0" TextWrapping="Wrap" Text="D" VerticalAlignment="Top" Width="20" IsReadOnly="True" Visibility="Hidden"/>
+        <TextBox x:Name="Enemy_E_TextBox" HorizontalAlignment="Left" Height="20" Margin="168,67,0,0" TextWrapping="Wrap" Text="E" VerticalAlignment="Top" Width="20" IsReadOnly="True" Visibility="Hidden"/>
+        <TextBox x:Name="Enemy_F_TextBox" HorizontalAlignment="Left" Height="20" Margin="188,67,0,0" TextWrapping="Wrap" Text="F" VerticalAlignment="Top" Width="20" IsReadOnly="True" Visibility="Hidden"/>
+        <TextBox x:Name="Enemy_G_TextBox" HorizontalAlignment="Left" Height="20" Margin="208,67,0,0" TextWrapping="Wrap" Text="G" VerticalAlignment="Top" Width="20" IsReadOnly="True" Visibility="Hidden"/>
+        <TextBox x:Name="Enemy_H_TextBox" HorizontalAlignment="Left" Height="20" Margin="228,67,0,0" TextWrapping="Wrap" Text="H" VerticalAlignment="Top" Width="20" IsReadOnly="True" Visibility="Hidden"/>
+        <TextBox x:Name="Enemy_I_TextBox" HorizontalAlignment="Left" Height="20" Margin="248,67,0,0" TextWrapping="Wrap" Text="I" VerticalAlignment="Top" Width="20" IsReadOnly="True" Visibility="Hidden"/>
+        <TextBox x:Name="Enemy_J_TextBox" HorizontalAlignment="Left" Height="20" Margin="268,67,0,0" TextWrapping="Wrap" Text="J" VerticalAlignment="Top" Width="20" IsReadOnly="True" Visibility="Hidden"/>
         <Button x:Name="PlaceShips" Content="Place Ships" HorizontalAlignment="Left" Height="34" Margin="92,28,0,0" VerticalAlignment="Top" Width="73" Click="PlaceShips_Click" Visibility="Hidden"/>
         <Button x:Name="Start_Game_Button" Content="Start" HorizontalAlignment="Left" Height="45" Margin="340,156,0,0" VerticalAlignment="Top" Width="75" Background="#FF11D4FF" Click="Start_Game_Button_Click"/>
         <Label x:Name="Main_Menu_Label" Content="BATTLESHIP" HorizontalAlignment="Left" Height="77" Margin="34,21,0,0" VerticalAlignment="Top" Width="328" FontSize="48" FontFamily="Segoe UI Black"/>

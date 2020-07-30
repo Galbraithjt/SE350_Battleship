@@ -23,9 +23,9 @@ namespace Battleship
                               System.Windows.Point carrier, System.Windows.Point cruiser,
                               System.Windows.Point battleship)
         {
-            setShips(submarine, patrol, carrier, cruiser, battleship);
+            SetShips(submarine, patrol, carrier, cruiser, battleship);
         }
-        public void setShips(System.Windows.Point submarine, System.Windows.Point patrol,
+        public void SetShips(System.Windows.Point submarine, System.Windows.Point patrol,
                               System.Windows.Point carrier, System.Windows.Point cruiser,
                               System.Windows.Point battleship)
         {

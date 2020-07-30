@@ -24,9 +24,9 @@ namespace Battleship
             GridLocation= new int [10,10];
             hits = 0;
             misses = 0;
-            clearGrid();
+            ClearGrid();
     }
-        public void algorithm()
+        public void Algorithm()
         {
            // Math.Floor((495 - 329) / 20);
             //Take the start point of the grid(left/top (the x/y) ) and 
@@ -48,7 +48,7 @@ namespace Battleship
             height = (20 * 1);
 
         }
-        public void placeShips(Grid grid, Ship ship)
+        public void PlaceShips(Grid grid, Ship ship)
         {
             bool notPlace = false;
             do
@@ -90,9 +90,9 @@ namespace Battleship
             } while (notPlace == false);
 
         }
-        private void clearGrid()
+        private void ClearGrid()
         {
-            for (int x = 0; x < 10;x++)
+            for (int x = 0; x < 10; x++)
             {
                 for (int y = 0; y < 10; y++)
                 {
@@ -100,7 +100,8 @@ namespace Battleship
                 }
             }
         }
-        public void isHit(System.Windows.Point firedLocation)
+
+        public void IsHit(System.Windows.Point firedLocation)
         {
             for (int x = 0; x < playerShips.Length; x++)
             {
@@ -131,7 +132,7 @@ namespace Battleship
                 }
             }
         }
-        public void reportShipHealth(Ship ship)
+        public void ReportShipHealth(Ship ship)
         {
 
         }
