@@ -61,7 +61,7 @@
             </Grid.ColumnDefinitions>
 
         </Grid>
-        <Grid x:Name="Enemy_Grid" Margin="329,88,71,26" ShowGridLines="True" Background="White" MouseDown="Enemy_Grid_MouseDown_1" Visibility="Hidden">
+        <Grid x:Name="Enemy_Grid" Margin="329,88,71,26" ShowGridLines="True" Background="White" MouseDown="Enemy_Grid_MouseDown" Visibility="Hidden">
             <Grid.RowDefinitions>
                 <RowDefinition Height="20*"/>
                 <RowDefinition Height="20*"/>
@@ -98,6 +98,7 @@
         <TextBox x:Name="Player_H_TextBox" HorizontalAlignment="Left" Height="20" Margin="469,66,0,0" TextWrapping="Wrap" Text="H" VerticalAlignment="Top" Width="20" IsReadOnly="True" Visibility="Hidden"/>
         <TextBox x:Name="Player_I_TextBox" HorizontalAlignment="Left" Height="20" Margin="489,66,0,0" TextWrapping="Wrap" Text="I" VerticalAlignment="Top" Width="20" IsReadOnly="True" Visibility="Hidden"/>
         <TextBox x:Name="Player_J_TextBox" HorizontalAlignment="Left" Height="20" Margin="509,66,0,0" TextWrapping="Wrap" Text="J" VerticalAlignment="Top" Width="20" IsReadOnly="True" Visibility="Hidden"/>
+        <!--Enemy Visual Elements-->
         <Canvas x:Name="Enemy_Canvas" Margin="329,88,74,32" Width="200" Height="200" x:FieldModifier="public" Visibility="Hidden"/>
         <TextBox x:Name="Enemy_A_TextBox" HorizontalAlignment="Left" Height="20" Margin="88,67,0,0" TextWrapping="Wrap" Text="A" VerticalAlignment="Top" Width="20" IsReadOnly="True" Visibility="Hidden"/>
         <TextBox x:Name="Enemy_B_TextBox" HorizontalAlignment="Left" Height="20" Margin="108,67,0,0" TextWrapping="Wrap" Text="B" VerticalAlignment="Top" Width="20" IsReadOnly="True" Visibility="Hidden"/>

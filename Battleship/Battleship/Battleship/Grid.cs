@@ -9,7 +9,7 @@ namespace Battleship
     class Grid
     {
         public Ship[] playerShips;
-        public int[,] GridLocation;
+        public int[,] gridLocation;
         public int shipsSunk;
         public int gridWidthStart;
         public int gridHeightStart;
@@ -21,13 +21,12 @@ namespace Battleship
             shipsSunk = 0;
             gridWidthStart = 329;
             gridHeightStart = 88;
-            GridLocation= new int [10,10];
+            gridLocation = new int [10,10];
             hits = 0;
             misses = 0;
             ClearGrid();
     }
-        public void Algorithm()
-        {
+            /* Equation to determine individual squares
            // Math.Floor((495 - 329) / 20);
             //Take the start point of the grid(left/top (the x/y) ) and 
             //subtract the x/y point from the coorisponding side.
@@ -37,7 +36,6 @@ namespace Battleship
            // math.floor(value)
             int width = 0;
             int height = 0;
-
             //Because the grid is 20 by 20 for each square, 
             //the square selected will be switched with the
             //1 in this example 
@@ -46,8 +44,7 @@ namespace Battleship
             //Height = 1 - 10
             width = (20 * 1);
             height = (20 * 1);
-
-        }
+            */
         public void PlaceShips(Grid grid, Ship ship)
         {
             bool notPlace = false;
@@ -56,22 +53,22 @@ namespace Battleship
                 Random ranCol = new Random();
                 Random ranRow = new Random();
                
-                if (ship.direction == true)
+                if (ship.GetShipDirection() == true)
                 {
                     int compare = 0;
-                    int row = ranRow.Next(1, 10 - (ship.length - 1));
+                    int row = ranRow.Next(1, 10 - (ship.GetShipLength() - 1));
                     int col = ranCol.Next(1, 10);
-                    while (compare < ship.length)
+                    while (compare < ship.GetShipLength())
                     {
-                        if (grid.GridLocation[(row + compare), col] == 0)
+                        if (grid.gridLocation[(row + compare), col] == 0)
                         {
                             compare++;
-                            if (compare == ship.length)
+                            if (compare == ship.GetShipLength())
                             {
                                 notPlace = true;
-                                for (int x = 0; x < ship.length; x++)
+                                for (int x = 0; x < ship.GetShipLength(); x++)
                                 {
-                                    grid.GridLocation[(row + x), col] = 1;
+                                    grid.gridLocation[(row + x), col] = 1;
                                     ship.startPoint.X = row;
                                     ship.startPoint.Y = col;
                                 }
@@ -83,38 +80,34 @@ namespace Battleship
                         }
                     }
                 }
-
-
-
-
             } while (notPlace == false);
-
         }
+
         private void ClearGrid()
         {
             for (int x = 0; x < 10; x++)
             {
                 for (int y = 0; y < 10; y++)
                 {
-                    GridLocation[x,y] = 0;
+                    gridLocation[x,y] = 0;
                 }
             }
         }
 
-        public void IsHit(System.Windows.Point firedLocation)
+        public void IsItAHit(System.Windows.Point firedLocation)
         {
             for (int x = 0; x < playerShips.Length; x++)
             {
-                for (int y = 0; y < playerShips[x].length; y++)
+                for (int y = 0; y < playerShips[x].GetShipLength(); y++)
                 {
-                    if (playerShips[x].direction == true)
+                    if (playerShips[x].GetShipDirection() == true)
                     {
                         if (playerShips[x].startPoint.X + y == firedLocation.X)
                         {
-                            playerShips[x].health--;
-                            if (playerShips[x].health == 0)
+                            playerShips[x].SetShipHealth(-1);
+                            if (playerShips[x].GetShipHealth() == 0)
                             {
-                                System.Windows.MessageBox.Show("Enemy " + playerShips[x].name + " Sunk Commander!");
+                                System.Windows.MessageBox.Show("Enemy " + playerShips[x].GetShipName() + " Sunk Commander!");
                             }
                         }
                     }
@@ -122,10 +115,10 @@ namespace Battleship
                     {
                         if (playerShips[x].startPoint.Y + y == firedLocation.Y)
                         {
-                            playerShips[x].health--;
-                            if (playerShips[x].health == 0)
+                            playerShips[x].SetShipHealth(-1);
+                            if (playerShips[x].GetShipHealth() == 0)
                             {
-                                System.Windows.MessageBox.Show("Enemy " + playerShips[x].name + " Sunk Commander!");
+                                System.Windows.MessageBox.Show("Enemy " + playerShips[x].GetShipName() + " Sunk Commander!");
                             }
                         }
                     }

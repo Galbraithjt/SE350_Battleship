@@ -8,10 +8,10 @@ namespace Battleship
 {
     class Ship
     {
-        public int health;
-        public int length;
-        public String name;
-        public bool direction; // true = horizontal; false = vertical
+        private int health;
+        private int length;
+        private String name;
+        private bool direction; // true = horizontal; false = vertical
         public enum ShipLocation : int
         {
             ROW,
@@ -33,9 +33,28 @@ namespace Battleship
             this.length = length;
             this.name = name;
             direction = true;
+            startPoint = new System.Windows.Point();
         }
-        
-     
+        public int GetShipHealth()
+        {
+            return health;
+        }
+        public void SetShipHealth(int healthAdjustment)
+        {
+            health = health + healthAdjustment;
+        }
+        public int GetShipLength()
+        {
+            return length;
+        }
+        public bool GetShipDirection()
+        {
+            return direction;
+        }
+        public String GetShipName()
+        {
+            return name;
+        } 
     }
 }
 

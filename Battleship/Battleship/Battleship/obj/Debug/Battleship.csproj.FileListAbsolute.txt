@@ -29,7 +29,6 @@ C:\Users\Joshua\Documents\SE350\RealKennyBattleShip1_25_17\Battleship\Battleship
 C:\Users\Kenneth\Documents\GitHub\SE350_Battleship\Battleship\Battleship\Battleship\bin\Debug\Battleship.exe.config
 C:\Users\Kenneth\Documents\GitHub\SE350_Battleship\Battleship\Battleship\Battleship\bin\Debug\Battleship.exe
 C:\Users\Kenneth\Documents\GitHub\SE350_Battleship\Battleship\Battleship\Battleship\bin\Debug\Battleship.pdb
-C:\Users\Kenneth\Documents\GitHub\SE350_Battleship\Battleship\Battleship\Battleship\obj\Debug\Battleship.csprojAssemblyReference.cache
 C:\Users\Kenneth\Documents\GitHub\SE350_Battleship\Battleship\Battleship\Battleship\obj\Debug\MainWindow.g.cs
 C:\Users\Kenneth\Documents\GitHub\SE350_Battleship\Battleship\Battleship\Battleship\obj\Debug\App.g.cs
 C:\Users\Kenneth\Documents\GitHub\SE350_Battleship\Battleship\Battleship\Battleship\obj\Debug\Battleship_MarkupCompile.cache

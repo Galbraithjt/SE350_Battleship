@@ -74,9 +74,9 @@ namespace Battleship
             Player_Canvas.Children.Clear();
             for (int x = 0; x < gameBoard.playerOne.playerGrid.playerShips.Length; x++)
             {
-                PlaceShip(CreateShip(gameBoard.playerOne.playerGrid.playerShips[x].name,
-                                     gameBoard.playerOne.playerGrid.playerShips[x].length,
-                                     gameBoard.playerOne.playerGrid.playerShips[x].direction), 
+                PlaceShip(CreateShip(gameBoard.playerOne.playerGrid.playerShips[x].GetShipName(),
+                                     gameBoard.playerOne.playerGrid.playerShips[x].GetShipLength(),
+                                     gameBoard.playerOne.playerGrid.playerShips[x].GetShipDirection()), 
                                      Player_Canvas, gameBoard.playerOne.playerGrid.playerShips[x]);
             }
             //Player battleship visibility
@@ -158,7 +158,7 @@ namespace Battleship
             Confirm_Ships_Button.IsEnabled = false;
         }
 
-        private void Enemy_Grid_MouseDown_(object sender, MouseButtonEventArgs e)
+        private void Enemy_Grid_MouseDown(object sender, MouseButtonEventArgs e)
         {
             //Point is a object that holds a x and y value.
             //Point is then set to the current position of the click origin in 

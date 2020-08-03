@@ -9,8 +9,15 @@ namespace Battleship
     class Player
     {
 
+        /* Refactor notes for player:
+         * Create functionality within player to set ships if process is not acomplished in grid class. If Accomplished in grid class, remove set shits from player
+         * Seperation between human player and AI player into individual classes
+         * Have the player class keep track of their own ships possibly and remaining amount of ships
+         * 
+         * 
+         */
         public Grid playerGrid;
-        public bool CPU;
+        private bool CPU;
         public bool active;
         public Player()
         {
@@ -18,19 +25,17 @@ namespace Battleship
             CPU = false;
             active = false;
         }
-
-        public Player(System.Windows.Point submarine, System.Windows.Point patrol,
-                              System.Windows.Point carrier, System.Windows.Point cruiser,
-                              System.Windows.Point battleship)
+        public Player(bool cpuActive = false, bool activePlayer = false)
         {
-            SetShips(submarine, patrol, carrier, cruiser, battleship);
+            playerGrid = new Grid();
+            CPU = cpuActive;
+            active = activePlayer;
         }
         public void SetShips(System.Windows.Point submarine, System.Windows.Point patrol,
                               System.Windows.Point carrier, System.Windows.Point cruiser,
                               System.Windows.Point battleship)
         {
-          
-          
+            
         }
 
     }

@@ -25,13 +25,15 @@ namespace Battleship
         public Board()
         {
             playerOne = new Player();
-            playerTwo = new Player();
+            playerTwo = new Player(true, false);
                 
         }
+        
         public void StartGame()
         {
-            playerTwo.CPU = true;
+            //playerTwo.CPU = true;
         }
+        
         public void SelectSquare(System.Windows.Point selectedSquare, Grid grid)
         {
             fireLocation.X = Math.Floor(Math.Abs(selectedSquare.X - grid.gridWidthStart) / 20);
@@ -55,16 +57,16 @@ namespace Battleship
         {
             //Check to see if a hit or miss occurs on firing location. Return true if the selection has not
             //been previously fired upon; false if it has.
-            if (targetGrid.GridLocation[Convert.ToInt32(fireLocation.X), Convert.ToInt32(fireLocation.Y)] == 0)
+            if (targetGrid.gridLocation[Convert.ToInt32(fireLocation.X), Convert.ToInt32(fireLocation.Y)] == 0)
             {
-                targetGrid.GridLocation[Convert.ToInt32(fireLocation.X), Convert.ToInt32(fireLocation.Y)] = 3;
+                targetGrid.gridLocation[Convert.ToInt32(fireLocation.X), Convert.ToInt32(fireLocation.Y)] = 3;
                 return 0;
             }
             else
-            if (targetGrid.GridLocation[Convert.ToInt32(fireLocation.X), Convert.ToInt32(fireLocation.Y)] == 1)
+            if (targetGrid.gridLocation[Convert.ToInt32(fireLocation.X), Convert.ToInt32(fireLocation.Y)] == 1)
             {
-                targetGrid.GridLocation[Convert.ToInt32(fireLocation.X), Convert.ToInt32(fireLocation.Y)] = 4;
-                targetGrid.IsHit(fireLocation);
+                targetGrid.gridLocation[Convert.ToInt32(fireLocation.X), Convert.ToInt32(fireLocation.Y)] = 4;
+                targetGrid.IsItAHit(fireLocation);
                 return 1;
             }
             else
