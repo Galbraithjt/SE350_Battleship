@@ -94,7 +94,7 @@ namespace Battleship
             }
         }
 
-        public void IsItAHit(System.Windows.Point firedLocation)
+        public void ReportShipDamage(System.Windows.Point firedLocation)
         {
             for (int x = 0; x < playerShips.Length; x++)
             {
@@ -125,9 +125,11 @@ namespace Battleship
                 }
             }
         }
+        /*
         public void ReportShipHealth(Ship ship)
         {
 
         }
+        */
     }
 }

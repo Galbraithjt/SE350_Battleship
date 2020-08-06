@@ -41,7 +41,7 @@ namespace Battleship
         private void Fire_Missile_Click(object sender, RoutedEventArgs e)
         {
             //Create a rectangle that is dependant on if a hit or miss is achieved
-            if (Perform_Turn() == true)
+            if (Perform_Turn() == false)
             {
                 if (gameBoard.playerOne.active == true)
                 {
@@ -62,7 +62,7 @@ namespace Battleship
                 Enemy_Canvas.Children.Add(hit);
                 PlaceRectangle(hit);
                 Fire_Missile.IsEnabled = false;
-                Hit_Ratio.Content = "Hit: ";
+                Hit_Ratio.Content = "Hit: " + gameBoard.playerOne.playerGrid.hits;
             }
            
         }
@@ -201,38 +201,35 @@ namespace Battleship
 
         private bool Perform_Turn()
         {
-            bool hitOrMiss = false;
-            if (gameBoard.playerOne.active == true)
+            //If firing status = 2, a hit was achieved
+            //Think of a better way to determine who's turn it is (perhaps move perform turn away from the main window?)
+            bool didItHit = false;
+            if (gameBoard.playerOne.active == true) 
             {
                 int firingStatus = gameBoard.FireShot(gameBoard.playerTwo.playerGrid);
-                if (firingStatus != 2)
-                {
-                    if (firingStatus == 0)
+               
+                    if (firingStatus == 2)
                     {
-                        hitOrMiss = true;
+                        didItHit = true;
                     }
                     else
                     {
-                        hitOrMiss = false;
+                        didItHit = false;
                     }
-                }
             }
             else
             {
                 int firingStatus = gameBoard.FireShot(gameBoard.playerOne.playerGrid);
-                if (firingStatus != 2)
-                {
-                    if (firingStatus == 0)
+                    if (firingStatus == 2)
                     {
-                        hitOrMiss = true;
+                        didItHit = true;
                     }
                     else
                     {
-                        hitOrMiss = false;
+                        didItHit = false;
                     }
-                }
             }
-            return hitOrMiss;
+            return didItHit;
         }
         private void End_State()
         {

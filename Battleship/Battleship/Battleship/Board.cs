@@ -11,27 +11,25 @@ namespace Battleship
        public Player playerOne;
        public Player playerTwo;
        public System.Windows.Point fireLocation;
-
+       private enum gridSquareStatus : int
+        {
+            EMPTYGRIDSQUARE, //0
+            OCCUPGRIDSQUARE, //1
+            FIREDANDHIT, //2
+            FIREDANDMISS //3
+        };
         /*
          * Notes for board refactor:
          * 
-         * COMMENTS FOR THINGS 
+         * 
          * Explain Math Equation in all instances used
-         * 
-         * 
-         * 
+         *
          */
 
         public Board()
         {
-            playerOne = new Player();
+            playerOne = new Player(false, true);
             playerTwo = new Player(true, false);
-                
-        }
-        
-        public void StartGame()
-        {
-            //playerTwo.CPU = true;
         }
         
         public void SelectSquare(System.Windows.Point selectedSquare, Grid grid)
@@ -39,6 +37,7 @@ namespace Battleship
             fireLocation.X = Math.Floor(Math.Abs(selectedSquare.X - grid.gridWidthStart) / 20);
             fireLocation.Y = Math.Floor(Math.Abs(selectedSquare.Y - grid.gridHeightStart) / 20);
         }
+
         public void PlaceShips(Grid grid)
         {
             grid.playerShips[0] = new Ship(0, 0, 2,"Patrol");
@@ -50,29 +49,45 @@ namespace Battleship
             {
                 grid.PlaceShips(grid, grid.playerShips[x]);
             }
-
-
         }
+
         public int FireShot(Grid targetGrid)
         {
-            //Check to see if a hit or miss occurs on firing location. Return true if the selection has not
-            //been previously fired upon; false if it has.
-            if (targetGrid.gridLocation[Convert.ToInt32(fireLocation.X), Convert.ToInt32(fireLocation.Y)] == 0)
+            //Check to see if a hit or miss occurs on firing location and return values related to aforementioned hit or miss
+            // 0 = Square is not occupied and should result in a miss (3)
+            // 1 = Square has an entity of a ship and should result in a hit (2)
+            // Default to miss for any potential errors in math
+            switch (targetGrid.gridLocation[Convert.ToInt32(fireLocation.X), Convert.ToInt32(fireLocation.Y)])
             {
-                targetGrid.gridLocation[Convert.ToInt32(fireLocation.X), Convert.ToInt32(fireLocation.Y)] = 3;
-                return 0;
+                case (0):
+                    targetGrid.gridLocation[Convert.ToInt32(fireLocation.X), Convert.ToInt32(fireLocation.Y)] = 3;
+                    return Convert.ToInt32(gridSquareStatus.FIREDANDMISS);
+                case (1):
+                    targetGrid.gridLocation[Convert.ToInt32(fireLocation.X), Convert.ToInt32(fireLocation.Y)] = 2;
+                    return Convert.ToInt32(gridSquareStatus.FIREDANDHIT);
+                default:
+                    return Convert.ToInt32(gridSquareStatus.FIREDANDMISS);
+            }
+
+            /* OLD IF STATEMENT CODE
+             * 
+            if (targetGrid.gridLocation[Convert.ToInt32(fireLocation.X), Convert.ToInt32(fireLocation.Y)] == Convert.ToInt32(gridSquareStatus.EMPTYGRIDSQUARE))
+            {
+                targetGrid.gridLocation[Convert.ToInt32(fireLocation.X), Convert.ToInt32(fireLocation.Y)] = Convert.ToInt32(gridSquareStatus.FIREDANDMISS);
+                return Convert.ToInt32(gridSquareStatus.FIREDANDMISS);
             }
             else
-            if (targetGrid.gridLocation[Convert.ToInt32(fireLocation.X), Convert.ToInt32(fireLocation.Y)] == 1)
+            if (targetGrid.gridLocation[Convert.ToInt32(fireLocation.X), Convert.ToInt32(fireLocation.Y)] == Convert.ToInt32(gridSquareStatus.OCCUPGRIDSQUARE))
             {
-                targetGrid.gridLocation[Convert.ToInt32(fireLocation.X), Convert.ToInt32(fireLocation.Y)] = 4;
-                targetGrid.IsItAHit(fireLocation);
-                return 1;
+                targetGrid.gridLocation[Convert.ToInt32(fireLocation.X), Convert.ToInt32(fireLocation.Y)] = Convert.ToInt32(gridSquareStatus.FIREDANDHIT);
+                targetGrid.ReportShipDamage(fireLocation);
+                return Convert.ToInt32(gridSquareStatus.FIREDANDHIT);
             }
             else
             {
-                return 2;
+                return Convert.ToInt32(gridSquareStatus.FIREDANDMISS);
             }
+            */
         }
     }
 }
