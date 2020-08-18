@@ -89,5 +89,38 @@ namespace Battleship
             }
             */
         }
+        public bool PerformTurn()
+        {
+            //If firing status = 2, a hit was achieved
+            //Think of a better way to determine who's turn it is (perhaps move perform turn away from the main window?)
+
+            bool didItHit = false;
+            if (playerOne.active == true)
+            {
+                int firingStatus = FireShot(playerTwo.playerGrid);
+
+                if (firingStatus == 2)
+                {
+                    didItHit = true;
+                }
+                else
+                {
+                    didItHit = false;
+                }
+            }
+            else
+            {
+                int firingStatus = FireShot(playerOne.playerGrid);
+                if (firingStatus == 2)
+                {
+                    didItHit = true;
+                }
+                else
+                {
+                    didItHit = false;
+                }
+            }
+            return didItHit;
+        }
     }
 }

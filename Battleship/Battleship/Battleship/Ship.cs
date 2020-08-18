@@ -12,6 +12,7 @@ namespace Battleship
         private int length;
         private String name;
         private bool direction; // true = horizontal; false = vertical
+        private Random random;
         public enum ShipLocation : int
         {
             ROW,
@@ -25,15 +26,18 @@ namespace Battleship
             health = length;
             name = " ";
             startPoint = new System.Windows.Point();
-            direction = true;
+            SetShipDirection();
         }
         public Ship(double startLocationX = 0, double startLocationY = 0, int length = 0, String name = " ")
         {
             health = length;
             this.length = length;
             this.name = name;
-            direction = true;
+            random = new Random();
+            SetShipDirection();
             startPoint = new System.Windows.Point();
+            startPoint.X = startLocationX;
+            startPoint.Y = startLocationY;
         }
         public int GetShipHealth()
         {
@@ -50,6 +54,20 @@ namespace Battleship
         public bool GetShipDirection()
         {
             return direction;
+        }
+        private void SetShipDirection()
+        {
+            
+            int ranNum = random.Next(1, 101);
+            Console.WriteLine("Random Number = " + ranNum);
+            if (ranNum % 2 == 0)
+            {
+                direction = true;
+            }
+            else
+            {
+                direction = false;
+            }
         }
         public String GetShipName()
         {

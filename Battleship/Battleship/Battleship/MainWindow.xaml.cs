@@ -28,7 +28,7 @@ namespace Battleship
          * COMMENTS PAST ME, ADD MORE COMMENTS
          * Rename player ships and enemy ships
          * Seperate enemy and player ships more clearly in the code
-         * 
+         * WHY WAS I SUCH AN IDIOT, ADD MORE DAMN COMMENTS  
          * 
          * */
         Board gameBoard;
@@ -38,10 +38,12 @@ namespace Battleship
             gameBoard = new Board();
         }
         
-        private void Fire_Missile_Click(object sender, RoutedEventArgs e)
+        public void Fire_Missile_Click(object sender, RoutedEventArgs e)
         {
+
+            ///Clean this if statement up and convert to a switch statement
             //Create a rectangle that is dependant on if a hit or miss is achieved
-            if (Perform_Turn() == false)
+            if (gameBoard.PerformTurn() == false)
             {
                 if (gameBoard.playerOne.active == true)
                 {
@@ -67,14 +69,17 @@ namespace Battleship
            
         }
 
-        private void PlaceShips_Click(object sender, RoutedEventArgs e)
+        public void PlaceShips_Click(object sender, RoutedEventArgs e)
         {
             gameBoard.PlaceShips(gameBoard.playerOne.playerGrid);
             Confirm_Ships_Button.IsEnabled = true;
             Player_Canvas.Children.Clear();
+            //Two for loops to clear out previous ship locations before creating new ships
+            //Assumes that ships have been created once before by the user
+            gameBoard.playerOne.playerGrid.ClearGrid();
             for (int x = 0; x < gameBoard.playerOne.playerGrid.playerShips.Length; x++)
             {
-                PlaceShip(CreateShip(gameBoard.playerOne.playerGrid.playerShips[x].GetShipName(),
+                DrawShipOnGrid(CreateShip(gameBoard.playerOne.playerGrid.playerShips[x].GetShipName(),
                                      gameBoard.playerOne.playerGrid.playerShips[x].GetShipLength(),
                                      gameBoard.playerOne.playerGrid.playerShips[x].GetShipDirection()), 
                                      Player_Canvas, gameBoard.playerOne.playerGrid.playerShips[x]);
@@ -86,14 +91,40 @@ namespace Battleship
             Player_PatrolBoat.Visibility = Visibility.Hidden;
             Player_Sub.Visibility = Visibility.Hidden;
             //Enemy Battleship visibility
-            Enemy_Battleship.Visibility = Visibility.Hidden;
-            Enemy_Carrier.Visibility = Visibility.Hidden;
-            Enemy_Destroyer.Visibility = Visibility.Hidden;
-            Enemy_PatrolBoat.Visibility = Visibility.Hidden;
-            Enemy_Sub.Visibility = Visibility.Hidden;
+            Enemy_Battleship.Visibility = Visibility.Visible;
+            Enemy_Carrier.Visibility = Visibility.Visible;
+            Enemy_Destroyer.Visibility = Visibility.Visible;
+            Enemy_PatrolBoat.Visibility = Visibility.Visible;
+            Enemy_Sub.Visibility = Visibility.Visible;
         }
+        public void Confirm_Ships_Button_Click(object sender, RoutedEventArgs e)
+            {
+                ///Enemy canvas code copied from place ships code
+                ///currently not removing old ships from enemy shipyard after placement
+                gameBoard.PlaceShips(gameBoard.playerTwo.playerGrid);
+                Enemy_Canvas.Children.Clear();
+                //Two for loops to clear out previous ship locations before creating new ships
+                //Assumes that ships have been created once before by the user
+                gameBoard.playerTwo.playerGrid.ClearGrid();
+                for (int x = 0; x < gameBoard.playerTwo.playerGrid.playerShips.Length; x++)
+                {
+                    DrawShipOnGrid(CreateShip(gameBoard.playerTwo.playerGrid.playerShips[x].GetShipName(),
+                                            gameBoard.playerTwo.playerGrid.playerShips[x].GetShipLength(),
+                                            gameBoard.playerTwo.playerGrid.playerShips[x].GetShipDirection()),
+                                            Enemy_Canvas, gameBoard.playerTwo.playerGrid.playerShips[x]);
+                }
 
-        private void Start_Game_Button_Click(object sender, RoutedEventArgs e)
+                PlaceShips.Visibility = Visibility.Hidden;
+                Confirm_Ships_Button.Visibility = Visibility.Hidden;
+                Miss_Ratio.Visibility = Visibility.Visible;
+                Miss_Ratio_Enemy.Visibility = Visibility.Visible;
+                Hit_Ratio.Visibility = Visibility.Visible;
+                Hit_Ratio_Enemy.Visibility = Visibility.Visible;
+                Fire_Missile.Visibility = Visibility.Visible;
+                Retreat.Visibility = Visibility.Visible;
+                Enemy_Grid.IsEnabled = true;
+            }
+        public void Start_Game_Button_Click(object sender, RoutedEventArgs e)
         {
             Main_Menu_Label.Visibility = Visibility.Hidden;
             Start_Game_Button.Visibility = Visibility.Hidden;
@@ -181,56 +212,13 @@ namespace Battleship
             Canvas.SetLeft(selection, (gameBoard.fireLocation.X * 20));
         }
 
-        private void Confirm_Ships_Button_Click(object sender, RoutedEventArgs e)
-        {
-            PlaceShips.Visibility = Visibility.Hidden;
-            Confirm_Ships_Button.Visibility = Visibility.Hidden;
-            Miss_Ratio.Visibility = Visibility.Visible;
-            Miss_Ratio_Enemy.Visibility = Visibility.Visible;
-            Hit_Ratio.Visibility = Visibility.Visible;
-            Hit_Ratio_Enemy.Visibility = Visibility.Visible;
-            Fire_Missile.Visibility = Visibility.Visible;
-            Retreat.Visibility = Visibility.Visible;
-            Enemy_Grid.IsEnabled = true;
-        }
+        
 
         private void Retreat_Click(object sender, RoutedEventArgs e)
         {
             Application.Current.Shutdown();
         }
 
-        private bool Perform_Turn()
-        {
-            //If firing status = 2, a hit was achieved
-            //Think of a better way to determine who's turn it is (perhaps move perform turn away from the main window?)
-            bool didItHit = false;
-            if (gameBoard.playerOne.active == true) 
-            {
-                int firingStatus = gameBoard.FireShot(gameBoard.playerTwo.playerGrid);
-               
-                    if (firingStatus == 2)
-                    {
-                        didItHit = true;
-                    }
-                    else
-                    {
-                        didItHit = false;
-                    }
-            }
-            else
-            {
-                int firingStatus = gameBoard.FireShot(gameBoard.playerOne.playerGrid);
-                    if (firingStatus == 2)
-                    {
-                        didItHit = true;
-                    }
-                    else
-                    {
-                        didItHit = false;
-                    }
-            }
-            return didItHit;
-        }
         private void End_State()
         {
             Fire_Missile.Visibility = Visibility.Hidden;
@@ -300,7 +288,7 @@ namespace Battleship
             }
             return ship;
         }
-        private void PlaceShip(Ellipse drawShip, Canvas canvas, Ship ship)
+        private void DrawShipOnGrid(Ellipse drawShip, Canvas canvas, Ship ship)
         {
             canvas.Children.Add(drawShip);
             Canvas.SetTop(drawShip, (ship.startPoint.Y * 20));

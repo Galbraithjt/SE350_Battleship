@@ -47,43 +47,112 @@ namespace Battleship
             */
         public void PlaceShips(Grid grid, Ship ship)
         {
-            bool notPlace = false;
-            do
+            //Ship direction returing as true = ship is oriented as horizontal||false = vertical
+            if(ship.GetShipDirection() == true)
             {
-                Random ranCol = new Random();
-                Random ranRow = new Random();
-               
-                if (ship.GetShipDirection() == true)
+                HorizontalPlacement(grid, ship);
+            }
+            else
+            {
+                VerticalPlacement(grid, ship);
+            }
+        }
+
+        private void HorizontalPlacement(Grid grid, Ship ship)
+        {
+
+            bool shipPlaced = false;
+            int selectedRow;
+            int selectedColumn;
+            Random randomPlacement = new Random();
+            int shipLength = ship.GetShipLength();
+            bool occupiedSpot;
+            /// Until the ship finds a place that is not occupied, following code will:
+            /// Generate a random row that accounts for the ship's length (to prevent clipping and array index out of bounds)
+            /// Check subsequent spots from the origin point for other entities occupying the space ( 1 = occupied space in grid location array)
+            /// Place ship and break the loop
+            while (shipPlaced == false)
+            {
+                occupiedSpot = false;
+                selectedRow = randomPlacement.Next(1, 10 - (shipLength - 1));
+                selectedColumn = randomPlacement.Next(1, 10);
+                if (grid.gridLocation[selectedRow, selectedColumn] == 0)
                 {
-                    int compare = 0;
-                    int row = ranRow.Next(1, 10 - (ship.GetShipLength() - 1));
-                    int col = ranCol.Next(1, 10);
-                    while (compare < ship.GetShipLength())
+                    for (int x = 0; x < shipLength; x++)
                     {
-                        if (grid.gridLocation[(row + compare), col] == 0)
+                        if (grid.gridLocation[selectedRow + x, selectedColumn] == 1)
                         {
-                            compare++;
-                            if (compare == ship.GetShipLength())
-                            {
-                                notPlace = true;
-                                for (int x = 0; x < ship.GetShipLength(); x++)
-                                {
-                                    grid.gridLocation[(row + x), col] = 1;
-                                    ship.startPoint.X = row;
-                                    ship.startPoint.Y = col;
-                                }
-                            }
-                        }
-                        else
-                        {
+                            occupiedSpot = true;
                             break;
                         }
                     }
-                }
-            } while (notPlace == false);
-        }
+                    if (occupiedSpot == true)
+                    {
+                        continue;
+                    }
+                    else
+                    {
 
-        private void ClearGrid()
+                        for (int x = 0; x < shipLength; x++)
+                        {
+                            grid.gridLocation[selectedRow + x, selectedColumn] = 1;
+                            ship.startPoint.X = selectedRow;
+                            ship.startPoint.Y = selectedColumn;
+                        }
+                        shipPlaced = true;
+                    }
+                }
+            }
+        }
+        private void VerticalPlacement(Grid grid, Ship ship)
+        {
+
+            bool shipPlaced = false;
+            int selectedRow;
+            int selectedColumn;
+            Random randomPlacement = new Random();
+            int shipLength = ship.GetShipLength();
+            //Ship direction = true means it is horizontal
+            bool occupiedSpot;
+            /// Until the ship finds a place that is not occupied, following code will:
+            /// Generate a random row that accounts for the ship's length (to prevent clipping and array index out of bounds)
+            /// Check subsequent spots from the origin point for other entities occupying the space ( 1 = occupied space in grid location array)
+            /// Place ship and break the loop
+            while (shipPlaced == false)
+            {
+                occupiedSpot = false;
+                selectedRow = randomPlacement.Next(1, 10);
+                selectedColumn = randomPlacement.Next(1, 10 - (shipLength - 1));
+                if (grid.gridLocation[selectedRow, selectedColumn] == 0)
+                {
+                    for (int x = 0; x < shipLength; x++)
+                    {
+                        if (grid.gridLocation[selectedRow, selectedColumn + x] == 1)
+                        {
+                            occupiedSpot = true;
+                            break;
+                        }
+                    }
+                    if (occupiedSpot == true)
+                    {
+                        continue;
+                    }
+                    else
+                    {
+
+                        for (int x = 0; x < shipLength; x++)
+                        {
+                            grid.gridLocation[selectedRow, selectedColumn + x] = 1;
+                            ship.startPoint.X = selectedRow;
+                            ship.startPoint.Y = selectedColumn;
+                        }
+                        shipPlaced = true;
+                    }
+
+                }
+            }
+        }
+        public void ClearGrid()
         {
             for (int x = 0; x < 10; x++)
             {

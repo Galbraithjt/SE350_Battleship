@@ -17,7 +17,7 @@ namespace Battleship
          * 
          */
         public Grid playerGrid;
-        private bool CPU;
+        private readonly bool CPU;
         public bool active;
         public Player()
         {
