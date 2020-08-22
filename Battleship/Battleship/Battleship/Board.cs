@@ -34,8 +34,17 @@ namespace Battleship
         
         public void SelectSquare(System.Windows.Point selectedSquare, Grid grid)
         {
-            fireLocation.X = Math.Floor(Math.Abs(selectedSquare.X - grid.gridWidthStart) / 20);
-            fireLocation.Y = Math.Floor(Math.Abs(selectedSquare.Y - grid.gridHeightStart) / 20);
+            fireLocation.X = Math.Floor(Math.Abs(selectedSquare.X - grid.gridWidthStart) / 40);
+            fireLocation.Y = Math.Floor(Math.Abs(selectedSquare.Y - grid.gridHeightStart) / 40);
+
+            if (fireLocation.X > 9)
+            {
+                fireLocation.X = 9;
+            }
+            if(fireLocation.Y > 9)
+            {
+                fireLocation.Y = 9;
+            }
         }
 
         public void PlaceShips(Grid grid)
@@ -92,8 +101,9 @@ namespace Battleship
         public bool PerformTurn()
         {
             //If firing status = 2, a hit was achieved
-            //Think of a better way to determine who's turn it is (perhaps move perform turn away from the main window?)
-
+            
+            ///CHANGE THE TWO FOR LOOPS INTO AN ALGORITHM THAT CAN 
+            ///SEARCH THE ARRAYS MORE EFFICENTLY 
             bool didItHit = false;
             if (playerOne.active == true)
             {
@@ -102,6 +112,10 @@ namespace Battleship
                 if (firingStatus == 2)
                 {
                     didItHit = true;
+
+                    playerTwo.playerGrid.ReportShipDamage(fireLocation);
+
+
                 }
                 else
                 {
@@ -123,4 +137,38 @@ namespace Battleship
             return didItHit;
         }
     }
+
 }
+
+
+/*
+ * 
+ * for (int x = 0; x < playerTwo.playerGrid.playerShips.Length; x++)
+                    {
+                        for (int y = 0; y < playerTwo.playerGrid.playerShips[x].GetShipLength(); y++)
+                        {
+                            if(playerTwo.playerGrid.playerShips[x].GetShipDirection() == true)
+                            {
+                                    if (playerTwo.playerGrid.playerShips[x].startPoint.X + y == fireLocation.X
+                                        && playerTwo.playerGrid.playerShips[x].startPoint.Y == fireLocation.Y
+                                        )
+                                    {
+                                        playerTwo.playerGrid.playerShips[x].SetShipHealth(-1);
+                                        break;
+                                    }
+                            }
+                            else
+                            {
+                                    if (playerTwo.playerGrid.playerShips[x].startPoint.X == fireLocation.X
+                                       && playerTwo.playerGrid.playerShips[x].startPoint.Y + y == fireLocation.Y
+                                       )
+                                    {
+                                        playerTwo.playerGrid.playerShips[x].SetShipHealth(-1);
+                                        break;
+                                    }
+                            }
+                        }
+                        
+                    }
+ * 
+ */

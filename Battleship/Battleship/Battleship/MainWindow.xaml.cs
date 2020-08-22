@@ -98,32 +98,38 @@ namespace Battleship
             Enemy_Sub.Visibility = Visibility.Visible;
         }
         public void Confirm_Ships_Button_Click(object sender, RoutedEventArgs e)
+        {
+            ///Enemy canvas code copied from place ships code
+            ///currently not removing old ships from enemy shipyard after placement
+            gameBoard.PlaceShips(gameBoard.playerTwo.playerGrid);
+            Enemy_Canvas.Children.Clear();
+            //Two for loops to clear out previous ship locations before creating new ships
+            //Assumes that ships have been created once before by the user
+            gameBoard.playerTwo.playerGrid.ClearGrid();
+            for (int x = 0; x < gameBoard.playerTwo.playerGrid.playerShips.Length; x++)
             {
-                ///Enemy canvas code copied from place ships code
-                ///currently not removing old ships from enemy shipyard after placement
-                gameBoard.PlaceShips(gameBoard.playerTwo.playerGrid);
-                Enemy_Canvas.Children.Clear();
-                //Two for loops to clear out previous ship locations before creating new ships
-                //Assumes that ships have been created once before by the user
-                gameBoard.playerTwo.playerGrid.ClearGrid();
-                for (int x = 0; x < gameBoard.playerTwo.playerGrid.playerShips.Length; x++)
-                {
-                    DrawShipOnGrid(CreateShip(gameBoard.playerTwo.playerGrid.playerShips[x].GetShipName(),
-                                            gameBoard.playerTwo.playerGrid.playerShips[x].GetShipLength(),
-                                            gameBoard.playerTwo.playerGrid.playerShips[x].GetShipDirection()),
-                                            Enemy_Canvas, gameBoard.playerTwo.playerGrid.playerShips[x]);
-                }
-
-                PlaceShips.Visibility = Visibility.Hidden;
-                Confirm_Ships_Button.Visibility = Visibility.Hidden;
-                Miss_Ratio.Visibility = Visibility.Visible;
-                Miss_Ratio_Enemy.Visibility = Visibility.Visible;
-                Hit_Ratio.Visibility = Visibility.Visible;
-                Hit_Ratio_Enemy.Visibility = Visibility.Visible;
-                Fire_Missile.Visibility = Visibility.Visible;
-                Retreat.Visibility = Visibility.Visible;
-                Enemy_Grid.IsEnabled = true;
+                DrawShipOnGrid(CreateShip(gameBoard.playerTwo.playerGrid.playerShips[x].GetShipName(),
+                                        gameBoard.playerTwo.playerGrid.playerShips[x].GetShipLength(),
+                                        gameBoard.playerTwo.playerGrid.playerShips[x].GetShipDirection()),
+                                        Enemy_Canvas, gameBoard.playerTwo.playerGrid.playerShips[x]);
             }
+
+            Enemy_Battleship.Visibility = Visibility.Hidden;
+            Enemy_Carrier.Visibility = Visibility.Hidden;
+            Enemy_Destroyer.Visibility = Visibility.Hidden;
+            Enemy_Sub.Visibility = Visibility.Hidden;
+            Enemy_PatrolBoat.Visibility = Visibility.Hidden;
+
+            PlaceShips.Visibility = Visibility.Hidden;
+            Confirm_Ships_Button.Visibility = Visibility.Hidden;
+            Miss_Ratio.Visibility = Visibility.Visible;
+            Miss_Ratio_Enemy.Visibility = Visibility.Visible;
+            Hit_Ratio.Visibility = Visibility.Visible;
+            Hit_Ratio_Enemy.Visibility = Visibility.Visible;
+            Fire_Missile.Visibility = Visibility.Visible;
+            Retreat.Visibility = Visibility.Visible;
+            Enemy_Grid.IsEnabled = true;
+        }
         public void Start_Game_Button_Click(object sender, RoutedEventArgs e)
         {
             Main_Menu_Label.Visibility = Visibility.Hidden;
@@ -203,16 +209,14 @@ namespace Battleship
             selection.Name = "selection";
             var sele = (UIElement)LogicalTreeHelper.FindLogicalNode(Enemy_Canvas, "selection");
             Enemy_Canvas.Children.Remove(sele);
-            selection.Width = 20;
-            selection.Height = 20;
+            selection.Width = 40;
+            selection.Height = 40;
             selection.Fill = new SolidColorBrush(Colors.Violet);
             selection.Opacity = .7;
             Enemy_Canvas.Children.Add(selection);
-            Canvas.SetTop(selection, (gameBoard.fireLocation.Y * 20));
-            Canvas.SetLeft(selection, (gameBoard.fireLocation.X * 20));
+            Canvas.SetTop(selection, (gameBoard.fireLocation.Y * 40));
+            Canvas.SetLeft(selection, (gameBoard.fireLocation.X * 40));
         }
-
-        
 
         private void Retreat_Click(object sender, RoutedEventArgs e)
         {
@@ -244,8 +248,8 @@ namespace Battleship
         {
             Rectangle rect = new Rectangle
             {
-                Width = 20,
-                Height = 20
+                Width = 40,
+                Height = 40
             };
 
             if (hitMiss == false)
@@ -263,8 +267,8 @@ namespace Battleship
 
         private void PlaceRectangle(Rectangle rect)
         {
-            Canvas.SetTop(rect, (gameBoard.fireLocation.Y * 20));
-            Canvas.SetLeft(rect, (gameBoard.fireLocation.X * 20));
+            Canvas.SetTop(rect, (gameBoard.fireLocation.Y * 40));
+            Canvas.SetLeft(rect, (gameBoard.fireLocation.X * 40));
         }
         private Ellipse CreateShip(String shipName, int length, bool direction)
         {
@@ -272,16 +276,16 @@ namespace Battleship
 
             if (direction == true)
             {
-                ship.Width = 20 * length;
-                ship.Height = 20;
+                ship.Width = 40 * length;
+                ship.Height = 40;
                 ship.Fill = new SolidColorBrush(Colors.Teal);
                 ship.Name = shipName;
                 ship.IsEnabled = false;
             }
             else
             {
-                ship.Width = 20;
-                ship.Height = 20 * length;
+                ship.Width = 40;
+                ship.Height = 40 * length;
                 ship.Fill = new SolidColorBrush(Colors.Teal);
                 ship.Name = shipName;
                 ship.IsEnabled = false;
@@ -291,8 +295,8 @@ namespace Battleship
         private void DrawShipOnGrid(Ellipse drawShip, Canvas canvas, Ship ship)
         {
             canvas.Children.Add(drawShip);
-            Canvas.SetTop(drawShip, (ship.startPoint.Y * 20));
-            Canvas.SetLeft(drawShip, (ship.startPoint.X * 20));
+            Canvas.SetLeft(drawShip, (ship.startPoint.X * 40));
+            Canvas.SetTop(drawShip, (ship.startPoint.Y * 40));
         }
         private void PlaceHitOrMiss(Canvas canvas, bool hitMiss)
         {

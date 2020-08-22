@@ -11,16 +11,16 @@ namespace Battleship
         public Ship[] playerShips;
         public int[,] gridLocation;
         public int shipsSunk;
-        public int gridWidthStart;
-        public int gridHeightStart;
+        public double gridWidthStart;
+        public double gridHeightStart;
         public int hits;
         public int misses;
         public Grid()
         {
             playerShips = new Ship[5];
             shipsSunk = 0;
-            gridWidthStart = 329;
-            gridHeightStart = 88;
+            gridWidthStart = 665;
+            gridHeightStart = 156;
             gridLocation = new int [10,10];
             hits = 0;
             misses = 0;
