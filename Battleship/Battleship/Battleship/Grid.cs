@@ -15,6 +15,7 @@ namespace Battleship
         public double gridHeightStart;
         public int hits;
         public int misses;
+        //grid width and height determined by UI canvas Left Margin and Upper Margin
         public Grid()
         {
             playerShips = new Ship[5];
@@ -26,7 +27,7 @@ namespace Battleship
             misses = 0;
             ClearGrid();
     }
-            /* Equation to determine individual squares
+        /* Equation to determine individual squares
            // Math.Floor((495 - 329) / 20);
             //Take the start point of the grid(left/top (the x/y) ) and 
             //subtract the x/y point from the coorisponding side.
@@ -57,10 +58,8 @@ namespace Battleship
                 VerticalPlacement(grid, ship);
             }
         }
-
         private void HorizontalPlacement(Grid grid, Ship ship)
         {
-
             bool shipPlaced = false;
             int selectedRow;
             int selectedColumn;
@@ -92,7 +91,6 @@ namespace Battleship
                     }
                     else
                     {
-
                         for (int x = 0; x < shipLength; x++)
                         {
                             grid.gridLocation[selectedRow + x, selectedColumn] = 1;
@@ -162,22 +160,34 @@ namespace Battleship
                 }
             }
         }
-
         public void ReportShipDamage(System.Windows.Point firedLocation)
         {
+            ///damageFound is being used for breaking out of loops
+            ///when the target ship's damage is found
+            bool damageFound = false;
             for (int x = 0; x < playerShips.Length; x++)
             {
-                for (int y = 0; y < playerShips[x].GetShipLength(); y++)
+                //break the loop if damage is found
+                if (damageFound == true)
                 {
+                    break;
+                }
+                //To prevent checking the ship's length from the method every itoration
+                int currentShipLength = playerShips[x].GetShipLength();
+                for (int y = 0; y < currentShipLength; y++)
+                {
+                    //Ship direction returing true = ship horizontal on grid
                     if (playerShips[x].GetShipDirection() == true)
                     {
                         if (playerShips[x].startPoint.X + y == firedLocation.X)
                         {
                             playerShips[x].SetShipHealth(-1);
+                            damageFound = true;
                             if (playerShips[x].GetShipHealth() == 0)
                             {
                                 System.Windows.MessageBox.Show("Enemy " + playerShips[x].GetShipName() + " Sunk Commander!");
                             }
+                            break;
                         }
                     }
                     else
@@ -185,20 +195,16 @@ namespace Battleship
                         if (playerShips[x].startPoint.Y + y == firedLocation.Y)
                         {
                             playerShips[x].SetShipHealth(-1);
+                            damageFound = true;
                             if (playerShips[x].GetShipHealth() == 0)
                             {
                                 System.Windows.MessageBox.Show("Enemy " + playerShips[x].GetShipName() + " Sunk Commander!");
                             }
+                            break;
                         }
                     }
                 }
             }
         }
-        /*
-        public void ReportShipHealth(Ship ship)
-        {
-
-        }
-        */
     }
 }

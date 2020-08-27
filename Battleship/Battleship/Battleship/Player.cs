@@ -31,12 +31,5 @@ namespace Battleship
             CPU = cpuActive;
             active = activePlayer;
         }
-        public void SetShips(System.Windows.Point submarine, System.Windows.Point patrol,
-                              System.Windows.Point carrier, System.Windows.Point cruiser,
-                              System.Windows.Point battleship)
-        {
-            
-        }
-
     }
 }

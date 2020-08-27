@@ -32,15 +32,18 @@ namespace Battleship
          * 
          * */
         Board gameBoard;
+        int gridSquareSize;
         public MainWindow()
         {
             InitializeComponent();
             gameBoard = new Board();
+            gridSquareSize = 40;
         }
         
         public void Fire_Missile_Click(object sender, RoutedEventArgs e)
         {
-
+            var sele = (UIElement)LogicalTreeHelper.FindLogicalNode(Enemy_Canvas, "selection");
+            Enemy_Canvas.Children.Remove(sele);
             ///Clean this if statement up and convert to a switch statement
             //Create a rectangle that is dependant on if a hit or miss is achieved
             if (gameBoard.PerformTurn() == false)
@@ -54,8 +57,6 @@ namespace Battleship
                 {
                     PlaceHitOrMiss(Player_Canvas, false);
                     Miss_Ratio.Content = "Miss: " + gameBoard.playerTwo.playerGrid.misses;
-                    var sele = (UIElement)LogicalTreeHelper.FindLogicalNode(Enemy_Canvas, "selection");
-                    Enemy_Canvas.Children.Remove(sele);
                 }
             }
             else
@@ -101,11 +102,14 @@ namespace Battleship
         {
             ///Enemy canvas code copied from place ships code
             ///currently not removing old ships from enemy shipyard after placement
-            gameBoard.PlaceShips(gameBoard.playerTwo.playerGrid);
-            Enemy_Canvas.Children.Clear();
+            
             //Two for loops to clear out previous ship locations before creating new ships
             //Assumes that ships have been created once before by the user
             gameBoard.playerTwo.playerGrid.ClearGrid();
+            gameBoard.PlaceShips(gameBoard.playerTwo.playerGrid);
+            Enemy_Canvas.Children.Clear();
+
+            /*
             for (int x = 0; x < gameBoard.playerTwo.playerGrid.playerShips.Length; x++)
             {
                 DrawShipOnGrid(CreateShip(gameBoard.playerTwo.playerGrid.playerShips[x].GetShipName(),
@@ -113,7 +117,7 @@ namespace Battleship
                                         gameBoard.playerTwo.playerGrid.playerShips[x].GetShipDirection()),
                                         Enemy_Canvas, gameBoard.playerTwo.playerGrid.playerShips[x]);
             }
-
+            */
             Enemy_Battleship.Visibility = Visibility.Hidden;
             Enemy_Carrier.Visibility = Visibility.Hidden;
             Enemy_Destroyer.Visibility = Visibility.Hidden;
@@ -267,8 +271,8 @@ namespace Battleship
 
         private void PlaceRectangle(Rectangle rect)
         {
-            Canvas.SetTop(rect, (gameBoard.fireLocation.Y * 40));
-            Canvas.SetLeft(rect, (gameBoard.fireLocation.X * 40));
+            Canvas.SetTop(rect, (gameBoard.fireLocation.Y * gridSquareSize));
+            Canvas.SetLeft(rect, (gameBoard.fireLocation.X * gridSquareSize));
         }
         private Ellipse CreateShip(String shipName, int length, bool direction)
         {
@@ -276,16 +280,16 @@ namespace Battleship
 
             if (direction == true)
             {
-                ship.Width = 40 * length;
-                ship.Height = 40;
+                ship.Width = gridSquareSize * length;
+                ship.Height = gridSquareSize;
                 ship.Fill = new SolidColorBrush(Colors.Teal);
                 ship.Name = shipName;
                 ship.IsEnabled = false;
             }
             else
             {
-                ship.Width = 40;
-                ship.Height = 40 * length;
+                ship.Width = gridSquareSize;
+                ship.Height = gridSquareSize * length;
                 ship.Fill = new SolidColorBrush(Colors.Teal);
                 ship.Name = shipName;
                 ship.IsEnabled = false;
@@ -295,8 +299,8 @@ namespace Battleship
         private void DrawShipOnGrid(Ellipse drawShip, Canvas canvas, Ship ship)
         {
             canvas.Children.Add(drawShip);
-            Canvas.SetLeft(drawShip, (ship.startPoint.X * 40));
-            Canvas.SetTop(drawShip, (ship.startPoint.Y * 40));
+            Canvas.SetLeft(drawShip, (ship.startPoint.X * gridSquareSize));
+            Canvas.SetTop(drawShip, (ship.startPoint.Y * gridSquareSize));
         }
         private void PlaceHitOrMiss(Canvas canvas, bool hitMiss)
         {
